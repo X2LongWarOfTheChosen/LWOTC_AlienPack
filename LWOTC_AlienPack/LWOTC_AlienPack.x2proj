@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Guid>fa9b04b1-c447-4ce3-b608-d6f7a7d0e648</Guid>
+    <Name>LWOTC_AlienPack</Name>
+    <Description>LWOTC_AlienPack</Description>
+    <SteamPublishID>0</SteamPublishID>
+    <AssemblyName>LWOTC_AlienPack</AssemblyName>
+    <RootNamespace>LWOTC_AlienPack</RootNamespace>
+    <ProjectGuid>{3f350978-33e7-493a-993b-92c1b54bf591}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Config\XComAI.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComContent.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComEditor.ini" />
+    <Content Include="Config\XComEngine.ini" />
+    <Content Include="Config\XComGame.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGameCore.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGameData.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGameData_CharacterStats.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGameData_WeaponData.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLWOTC_AlienPack.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLWOTC_AlienPackVariations.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLWOTC_PerkPack.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComMissions.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAdvGrenadier.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAdvGunner.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAdvMec.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAdvMecArcher.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAdvRocketeer.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAdvSentry.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWDrone.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWDroneWeapon.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWHiveQueen.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWMutonM2.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWMutonM3.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWMutonM3Rifle.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWNaja.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWOTC_AlienPack_ModShaderCache.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSectoidM2.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSidewinder.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSidewinderSMG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LW_Perk_MutonM3.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LW_Perk_Psi_MassMindspin.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LW_Perk_Psi_MassReanimation.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LW_Perk_RepairServos.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\NajaRifle.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_LWAlienPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\XAdventTrooper.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LWOTC_AlienPack.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\LWOTC_AlienPack.rus">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Translations\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModPreview.jpg" />
+    <Content Include="ReadMe.txt" />
+    <Content Include="ReadMe_DE.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_ES.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_FR.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_IT.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_JP.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_KR.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_PL.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_RU.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_SC.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe_TC.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack.uci">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\LWAlienPack_Utilities.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\LWUpdateAlienCustomizationAction.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\UIScreenListener_GameLoad.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\UIScreenListener_Shell.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\UIScreenListener_TacticalHUD.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Ability_LWAlienAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Ability_PPAlienAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Action_MoveClimbWall_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Character_AlienPack.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2DownloadableContentInfo_LWAlienPack.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_AdventGrenadeLauncher.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_AreaSuppression_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_BeastMaster.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_DamnGoodGround_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_DepthPerception_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_Executioner_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_HitandRun_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_HiveQueenSlash.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_Infighter_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_LightningReflexes_LW_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_LockedOn_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_PrimaryHitBonusDamage_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_ReadyForAnything.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_RepairServos.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_SimpleHeal.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_TacticalSense_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_TraverseFire_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_WarCry.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Item_LWAlienWeapons.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2Item_Resources_AlienPack.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2TargetingMethod_MassMindspin.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\XComGameState_AlienCustomizationManager.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\XComGameState_Effect_EffectCounter_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\XComGameState_Effect_IncomingReactionFire_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\XComGameState_Effect_LastShotDetails_AP.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\XComGameState_Unit_AlienCustomization.uc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Content\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Localization\Translations" />
+    <Folder Include="Src\" />
+    <Folder Include="Src\LWOTC_AlienPack" />
+    <Folder Include="Src\LWOTC_AlienPack\Classes" />
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
+</Project>

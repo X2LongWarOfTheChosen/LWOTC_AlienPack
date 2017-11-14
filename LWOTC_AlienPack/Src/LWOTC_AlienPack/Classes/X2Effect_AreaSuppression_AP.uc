@@ -3,7 +3,7 @@
 //  AUTHOR:  Amineri (Long War Studios)
 //  PURPOSE: Implements AoE Damage immunities for Bastion, based on Solace ability
 //---------------------------------------------------------------------------------------
-class X2Effect_AreaSuppression_AP extends X2Effect_Suppression config(LW_PerkPack);
+class X2Effect_AreaSuppression_AP extends X2Effect_Suppression config(LWOTC_PerkPack);
 
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {

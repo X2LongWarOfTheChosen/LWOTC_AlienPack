@@ -4,7 +4,7 @@
 //  PURPOSE: Conditionally refunds actions for Traverse Fire
 //--------------------------------------------------------------------------------------- 
 
-class X2Effect_TraverseFire_AP extends X2Effect_Persistent config (LW_AlienPack);
+class X2Effect_TraverseFire_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 var config int TF_USES_PER_TURN;
 var config array<name> TF_ABILITYNAMES;

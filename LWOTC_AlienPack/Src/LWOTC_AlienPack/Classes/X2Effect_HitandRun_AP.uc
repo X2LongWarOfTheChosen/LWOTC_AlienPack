@@ -4,7 +4,7 @@
 //  PURPOSE: Hit and Run effect to grant free action
 //--------------------------------------------------------------------------------------- 
 
-class X2Effect_HitandRun_AP extends X2Effect_Persistent config (LW_AlienPack);
+class X2Effect_HitandRun_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 //var config bool HITANDRUN_FULLACTION;
 var config array<name> HNR_ABILITYNAMES;

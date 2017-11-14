@@ -18,7 +18,7 @@ Dieser Mod bereichert die Kampagne um eine Reihe neuer Alien- und ADVENT-Gegner:
 * ADVENT-Schütze, ein Unterdrückungs-Spezialist
 * Viele von ihnen verfügen über verbesserte Versionen, die im späteren Verlauf der Kampagne auftauchen; der Mod umfasst zudem auch verbesserte Viper- und Archon-Varianten und bietet somit insgesamt 29 neue Gegner zum Bekämpfen.
 
-Der Mod bietet auch ein per ini-Datei konfigurierbares System zum Erstellen und Einfärben von neuen ADVENT-Soldaten-Varianten auf Grundlage der im Standardspiel enthaltenen Ressourcen. Bestimmte Aliens können mithilfe dieses Systems ebenfalls neu eingefärbt werden. Die ini-Datei zur Verwaltung dieser Anpassungen heißt XComLW_AlienVariations.
+Der Mod bietet auch ein per ini-Datei konfigurierbares System zum Erstellen und Einfärben von neuen ADVENT-Soldaten-Varianten auf Grundlage der im Standardspiel enthaltenen Ressourcen. Bestimmte Aliens können mithilfe dieses Systems ebenfalls neu eingefärbt werden. Die ini-Datei zur Verwaltung dieser Anpassungen heißt XComLWOTC_AlienVariations.
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ Manuelle Installation (ohne Steam Workshop):
 
 Manuelle Deinstallation des Mods:
 
-1) Lösche das Verzeichnis \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) Lösche das Verzeichnis \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 Hinweis: Ein Upgrade von Version v1 dieser Mod (die nur den Muton-Befehlshaber enthält) kann beim Laden von taktischen Spielständen, in denen ein Muton-Befehlshaber präsent ist, zu fehlerhaftem Verhalten führen.
 

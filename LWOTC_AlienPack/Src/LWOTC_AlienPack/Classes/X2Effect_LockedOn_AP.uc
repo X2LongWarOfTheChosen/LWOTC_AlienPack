@@ -4,7 +4,7 @@
 //  PURPOSE: Sets up LockedOn Perk Effect
 //--------------------------------------------------------------------------------------- 
 
-class X2Effect_LockedOn_AP extends X2Effect_Persistent config (LW_AlienPack);
+class X2Effect_LockedOn_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 var config int LOCKEDON_AIM_BONUS;
 

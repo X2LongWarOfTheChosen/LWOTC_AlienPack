@@ -5,11 +5,11 @@
 //---------------------------------------------------------------------------------------
 class LWUpdateAlienCustomizationAction extends Actor;
 
-`include(LW_AlienPack\Src\LW_AlienPack.uci)
+`include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
 var array<XComGameState_Unit> UnitsToUpdate;
 var XComGameStateHistory History;
-var int Count; 
+var int Count;
 
 // This is the automatic state to execute.
 auto state Idle

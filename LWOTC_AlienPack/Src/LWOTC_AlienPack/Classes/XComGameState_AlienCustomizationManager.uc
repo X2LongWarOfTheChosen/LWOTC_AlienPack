@@ -3,9 +3,9 @@
 //  AUTHOR:  Amineri / Long War Studios
 //  PURPOSE: This singleton object manages alien Customization settings
 //---------------------------------------------------------------------------------------
-class XComGameState_AlienCustomizationManager extends XComGameState_BaseObject config(LW_AlienVariations);
+class XComGameState_AlienCustomizationManager extends XComGameState_BaseObject config(LWOTC_AlienVariations);
 
-`include(LW_AlienPack\Src\LW_AlienPack.uci)
+`include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
 	// ADVENT Soldiers using the Props_SD_FX_Chunks material - 'TintColor', 'MetalColor'
 		// AdvTrooper(M1) - 'TintColor' (Detailing)
@@ -37,7 +37,7 @@ class XComGameState_AlienCustomizationManager extends XComGameState_BaseObject c
 
 	// Aliens using XCom weapons with the WeaponCustomizable_TC parent material - 'PrimaryColor', 'EmissiveColor', 'Pattern'
 
-	// Aliens using Alien weapons with WeaponCustomizable_TC parent material 
+	// Aliens using Alien weapons with WeaponCustomizable_TC parent material
 		// Viper - 'MetalColor'
 		// Archon - 'MetalColor'
 
@@ -79,7 +79,7 @@ struct LWUnitVariation
 	var bool Automatic;
 	var float Probability; // only one variation per unit
 	var float Scale; // multiplicative proportional scaling
-	var LWObjectAppearance BodyAppearance;	
+	var LWObjectAppearance BodyAppearance;
 	var LWObjectAppearance PrimaryWeaponAppearance;
 	var LWObjectAppearance SecondaryWeaponAppearance;
 	var array<SoldierClassAbilityType> AbilityUpgrades;
@@ -161,7 +161,7 @@ function EventListenerReturn OnUnitBeginPlay(Object EventData, Object EventSourc
 			{
 				`APTRACE("AlienCustomization: Testing Variation for :" @ UnitVariation.CharacterNames[0]);
 
-				if(UnitVariation.CharacterNames.Find(UnitState.GetMyTemplateName()) != -1) 
+				if(UnitVariation.CharacterNames.Find(UnitState.GetMyTemplateName()) != -1)
 				{
 					`APTRACE("AlienCustomization: Valid template found :" @ UnitVariation.CharacterNames[0]);
 

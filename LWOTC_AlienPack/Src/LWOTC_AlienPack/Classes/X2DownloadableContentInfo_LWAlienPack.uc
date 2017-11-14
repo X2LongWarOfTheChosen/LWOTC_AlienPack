@@ -2,14 +2,14 @@
 //  FILE:    X2DownloadableContentInfo_LWAlienPack.uc
 //  AUTHOR:  Amineri / Long War Studios
 //  PURPOSE: Initializes AlienPack mod settings on campaign start or when loading campaign without mod previously active
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
-class X2DownloadableContentInfo_LWAlienPack extends X2DownloadableContentInfo;	
+class X2DownloadableContentInfo_LWOTCAlienPack extends X2DownloadableContentInfo;
 
-`include(LW_AlienPack\Src\LW_AlienPack.uci)
+`include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
 /// <summary>
-/// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the 
+/// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the
 /// DLC / Mod to perform custom processing in response. This will only be called once the first time a player loads a save that was
 /// create without the content installed. Subsequent saves will record that the content was installed.
 /// </summary>
@@ -55,7 +55,7 @@ static function AddAndRegisterCustomizationManager()
 	local XComGameState_AlienCustomizationManager AlienCustomizationManager;
 
 	AlienCustomizationManager =  XComGameState_AlienCustomizationManager(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_AlienCustomizationManager', true));
-	if(AlienCustomizationManager == none) 
+	if(AlienCustomizationManager == none)
 	{
 		AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager();
 		AlienCustomizationManager.RegisterListeners();

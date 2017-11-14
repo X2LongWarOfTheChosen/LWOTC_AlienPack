@@ -4,11 +4,11 @@
 //
 //  PURPOSE: Implements hooks to execute things when a new save is loaded or a campaign entered
 //			This implementation "polls" more often that is desired, since we don't have a good way to detect when a new save has been loade
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
 class UIScreenListener_GameLoad extends UIScreenListener;
 
-//DEPRECATED
+//DEPRECATED - Unmodified from vanilla xcom2. If this file is revisited it will need to be redone
 
 // This event is triggered after a screen is initialized
 //event OnInit(UIScreen Screen)
@@ -23,7 +23,7 @@ class UIScreenListener_GameLoad extends UIScreenListener;
 	//LastGameIndex = CampaignSettingsStateObject.GameIndex;
 //
 	//AlienCustomizationManager =  XComGameState_AlienCustomizationManager(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_AlienCustomizationManager', true));
-	//if(AlienCustomizationManager == none) 
+	//if(AlienCustomizationManager == none)
 	//{
 		//AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager();
 	//}
@@ -47,7 +47,7 @@ class UIScreenListener_GameLoad extends UIScreenListener;
 	//if(UILoadGame(Screen) != none)
 	//{
 		//AlienCustomizationManager =  XComGameState_AlienCustomizationManager(`XCOMHISTORY.GetSingleGameStateObjectForClass(class'XComGameState_AlienCustomizationManager', true));
-		//if(AlienCustomizationManager == none) 
+		//if(AlienCustomizationManager == none)
 		//{
 			//AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager();
 		//}

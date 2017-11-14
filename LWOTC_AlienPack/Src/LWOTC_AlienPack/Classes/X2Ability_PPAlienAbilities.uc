@@ -1,10 +1,10 @@
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 //  FILE:    X2Ability_PPAlienAbilities
 //  AUTHOR:  Amineri / John Lumpkin (Long War Studios)
 //  PURPOSE: Defines alienpack ability templates copied from PerkPack
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
-class X2Ability_PPAlienAbilities extends X2Ability config(LW_AlienPack);
+class X2Ability_PPAlienAbilities extends X2Ability config(LWOTC_AlienPack);
 
 //Tactical Sense
 //DepthPerception
@@ -38,7 +38,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(AddTraverseFireAbility());
 	TEmplates.AddItem(AddAreaSuppressionAbility());
 	Templates.AddItem(AreaSuppressionShot_LW_AP());
-	return Templates;	
+	return Templates;
 }
 
 static function X2AbilityTemplate AddCenterMassAbility()
@@ -111,7 +111,7 @@ static function X2AbilityTemplate AddDamnGoodGroundAbility()
 	Template.AddTargetEffect (AimandDefModifiers);
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	return Template;		
+	return Template;
 }
 
 static function X2AbilityTemplate AddExecutionerAbility()
@@ -135,7 +135,7 @@ static function X2AbilityTemplate AddExecutionerAbility()
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 
-	return Template;		
+	return Template;
 }
 
 
@@ -160,7 +160,7 @@ static function X2AbilityTemplate AddTacticalSenseAbility()
 	Template.bCrossClassEligible = true;
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 
-	return Template;	
+	return Template;
 }
 
 
@@ -213,7 +213,7 @@ static function X2AbilityTemplate AddDepthPerceptionAbility()
 
 static function X2AbilityTemplate AddLightEmUpAbility()
 {
-	local X2AbilityTemplate                 Template;	
+	local X2AbilityTemplate                 Template;
 	local X2AbilityCost_Ammo                AmmoCost;
 	local X2AbilityCost_ActionPoints        ActionPointCost;
 	local array<name>                       SkipExclusions;
@@ -254,39 +254,39 @@ static function X2AbilityTemplate AddLightEmUpAbility()
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
 	ActionPointCost.bConsumeAllPoints = false; //THIS IS THE DIFFERENCE BETWEEN STANDARD SHOT
-	Template.AbilityCosts.AddItem(ActionPointCost);	
+	Template.AbilityCosts.AddItem(ActionPointCost);
 
 	// Ammo
-	AmmoCost = new class'X2AbilityCost_Ammo';	
+	AmmoCost = new class'X2AbilityCost_Ammo';
 	AmmoCost.iAmmo = 1;
 	Template.AbilityCosts.AddItem(AmmoCost);
-	Template.bAllowAmmoEffects = true; // 	
+	Template.bAllowAmmoEffects = true; //
 
 	// Weapon Upgrade Compatibility
 	Template.bAllowFreeFireWeaponUpgrade = true;                        // Flag that permits action to become 'free action' via 'Hair Trigger' or similar upgrade / effects
 
 	//  Put holo target effect first because if the target dies from this shot, it will be too late to notify the effect.
 	Template.AddTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect());
-	//  Various Soldier ability specific effects - effects check for the ability before applying	
+	//  Various Soldier ability specific effects - effects check for the ability before applying
 	Template.AddTargetEffect(class'X2Ability_GrenadierAbilitySet'.static.ShredderDamageEffect());
-	
+
 	// Damage Effect
 	Template.AddTargetEffect(default.WeaponUpgradeMissDamage);
 
 	// Hit Calculation (Different weapons now have different calculations for range)
 	Template.AbilityToHitCalc = default.SimpleStandardAim;
 	Template.AbilityToHitOwnerOnMissCalc = default.SimpleStandardAim;
-		
+
 	// Targeting Method
 	Template.TargetingMethod = class'X2TargetingMethod_OverTheShoulder';
 	Template.bUsesFiringCamera = true;
-	Template.CinescriptCameraType = "StandardGunFiring";	
+	Template.CinescriptCameraType = "StandardGunFiring";
 
 	Template.AssociatedPassives.AddItem('HoloTargeting');
 
 	// MAKE IT LIVE!
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
-	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;	
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 	Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
 
 	Template.bDisplayInUITooltip = true;
@@ -299,7 +299,7 @@ static function X2AbilityTemplate AddLightEmUpAbility()
 
 	Template.OverrideAbilities.AddItem('StandardShot');
 
-	return Template;	
+	return Template;
 }
 
 
@@ -308,7 +308,7 @@ static function X2AbilityTemplate AddTraverseFireAbility()
 {
 	local X2AbilityTemplate						Template;
 	local X2Effect_TraverseFire_AP				ActionEffect;
-	
+
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'TraverseFire_AP');
 	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityTraverseFire"; //TODO
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
@@ -330,7 +330,7 @@ static function X2AbilityTemplate AddTraverseFireAbility()
 
 static function X2AbilityTemplate AddLockedOnAbility()
 {
-	local X2AbilityTemplate                 Template;	
+	local X2AbilityTemplate                 Template;
 	local X2Effect_LockedOn_AP				LockedOnEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LockedOn_AP');
@@ -355,7 +355,7 @@ static function X2AbilityTemplate AddLockedOnAbility()
 
 static function X2AbilityTemplate AddLightningReflexes_LWAbility()
 {
-	local X2AbilityTemplate                 Template;	
+	local X2AbilityTemplate                 Template;
 	local X2Effect_LightningReflexes_LW_AP	PersistentEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LightningReflexes_LW_AP');
@@ -402,7 +402,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	Template.AbilityConfirmSound = "TacticalUI_ActivateAbility";
 	Template.bIsASuppressionEffect = true;
 
-	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);	
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
 	Template.AddShooterEffectExclusions();
 
 	Template.AssociatedPassives.AddItem('HoloTargeting');
@@ -417,7 +417,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	InventoryCondition2.ExcludeWeaponCategory = 'sniper_rifle';
 	Template.AbilityShooterConditions.AddItem(InventoryCondition2);
 
-	AmmoCost = new class'X2AbilityCost_Ammo';	
+	AmmoCost = new class'X2AbilityCost_Ammo';
 	AmmoCost.iAmmo = default.AREA_SUPPRESSION_AMMO_COST;
 	Template.AbilityCosts.AddItem(AmmoCost);
 
@@ -450,7 +450,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	RadiusMultiTarget.SoldierAbilityName = 'DangerZone';
 	RadiusMultiTarget.BonusRadius = 2;
 	Template.AbilityMultiTargetStyle = RadiusMultiTarget;
-	
+
 	Template.AbilityMultiTargetConditions.AddItem(default.LivingHostileUnitOnlyProperty);
 
 	SuppressionEffect = new class'X2Effect_AreaSuppression_AP';
@@ -472,7 +472,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 
 	Template.BuildVisualizationFn = AreaSuppressionBuildVisualization_LW;
 	Template.BuildAppliedVisualizationSyncFn = AreaSuppressionBuildVisualizationSync;
-	Template.CinescriptCameraType = "StandardSuppression";	
+	Template.CinescriptCameraType = "StandardSuppression";
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 
 	return Template;
@@ -482,7 +482,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 
 static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 {
-	local X2AbilityTemplate                 Template;	
+	local X2AbilityTemplate                 Template;
 	local X2AbilityCost_ReserveActionPoints ReserveActionPointCost;
 	local X2AbilityToHitCalc_StandardAim    StandardAim;
 	local X2Condition_Visibility            TargetVisibilityCondition;
@@ -498,7 +498,7 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 	ReserveActionPointCost.iNumPoints = 1;
 	ReserveActionPointCost.AllowedTypes.AddItem('Suppression');
 	Template.AbilityCosts.AddItem(ReserveActionPointCost);
-	
+
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
 	StandardAim.BuiltInHitMod = 0;
 	StandardAim.bReactionFire = true;
@@ -512,7 +512,7 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 	TargetEffectCondition.AddRequireEffect(class'X2Effect_AreaSuppression_AP'.default.EffectName, 'AA_UnitIsNotSuppressed');
 	Template.AbilityTargetConditions.AddItem(TargetEffectCondition);
 
-	TargetVisibilityCondition = new class'X2Condition_Visibility';	
+	TargetVisibilityCondition = new class'X2Condition_Visibility';
 	TargetVisibilityCondition.bRequireGameplayVisible = true;
 	Template.AbilityTargetConditions.AddItem(TargetVisibilityCondition);
 
@@ -524,7 +524,7 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 	RemoveSuppression.bCheckSource = true;
 	RemoveSuppression.SetupEffectOnShotContextResult(true, true);
 	Template.AddShooterEffect(RemoveSuppression);
-	
+
 	Template.AbilityTargetStyle = default.SimpleSingleTarget;
 
 	//Trigger on movement - interrupt the move
@@ -532,7 +532,7 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 	Trigger.EventObserverClass = class'X2TacticalGameRuleset_MovementObserver';
 	Trigger.MethodName = 'InterruptGameState';
 	Template.AbilityTriggers.AddItem(Trigger);
-	
+
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_supression";
@@ -543,20 +543,20 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 	//don't want to exit cover, we are already in suppression/alert mode.
 	Template.bSkipExitCoverWhenFiring = true;
 
-	Template.bAllowFreeFireWeaponUpgrade = true;	
+	Template.bAllowFreeFireWeaponUpgrade = true;
 //  Put holo target effect first because if the target dies from this shot, it will be too late to notify the effect.
 	ShotEffect = class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect();
 	ShotEffect.TargetConditions.AddItem(class'X2Ability_DefaultAbilitySet'.static.OverwatchTargetEffectsCondition());
 	Template.AddTargetEffect(ShotEffect);
-	//  Various Soldier ability specific effects - effects check for the ability before applying	
+	//  Various Soldier ability specific effects - effects check for the ability before applying
 	ShotEffect = class'X2Ability_GrenadierAbilitySet'.static.ShredderDamageEffect();
 	ShotEffect.TargetConditions.AddItem(class'X2Ability_DefaultAbilitySet'.static.OverwatchTargetEffectsCondition());
 	Template.AddTargetEffect(ShotEffect);
-	
+
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
 
-	return Template;	
+	return Template;
 }
 
 //Adds multitarget visualization
@@ -581,7 +581,7 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 	BuildTrack.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
 	BuildTrack.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
 	BuildTrack.TrackActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
-	
+
 	class'X2Action_ExitCover'.static.AddToVisualizationTrack(BuildTrack, Context);
 	class'X2Action_StartSuppression'.static.AddToVisualizationTrack(BuildTrack, Context);
 	OutVisualizationTracks.AddItem(BuildTrack);

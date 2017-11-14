@@ -1,10 +1,10 @@
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 //  FILE:    X2Ability_LWAlienAbilities
 //  AUTHOR:  Amineri / John Lumpkin (Long War Studios)
 //  PURPOSE: Defines alienpack ability templates
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
-class X2Ability_LWAlienAbilities extends X2Ability config(LW_AlienPack);
+class X2Ability_LWAlienAbilities extends X2Ability config(LWOTC_AlienPack);
 
 var config float WARCRY_RADIUS_METERS;
 var config int WARCRY_DURATION;
@@ -53,7 +53,7 @@ var localized string strBayonetChargePenalty;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
-	
+
 	Templates.AddItem(CreateMutonM2_LWAbility_Beastmaster());
 	Templates.AddItem(CreateMutonM2_LWAbility_WarCry());
 	Templates.AddItem(CreateMutonM2_LWAbility_BayonetCharge());
@@ -76,13 +76,13 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function X2AbilityTemplate AddRepairServosAbility()
 {
-	local X2AbilityTemplate						Template;	
+	local X2AbilityTemplate						Template;
 	local X2AbilityTrigger_EventListener		EventListener;
 	local X2Effect_RepairServos				RepairServosEffect;
 	local X2Condition_UnitEffects ExcludeEffects;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'RepairServos');
-	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityDamageControl";  
+	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityDamageControl";
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.Hostility = eHostility_Neutral;
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
@@ -142,7 +142,7 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_BeastMaster()
 	Trigger = new class 'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
 	BeastMasterEffect = new class'X2Effect_Beastmaster';
-	BeastMasterEffect.BuildPersistentEffect (1, true, false); 
+	BeastMasterEffect.BuildPersistentEffect (1, true, false);
 		//BuildPersistentEffect(int _iNumTurns, optional bool _bInfiniteDuration, optional bool _bRemoveWhenSourceDies, optional bool _bIgnorePlayerCheckOnTick, optional XComGameStateContext_TacticalGameRule.GameRuleStateChange _WatchRule)
 	BeastMasterEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName);
 		//SetDisplayInfo(X2TacticalGameRulesetDataStructures.EPerkBuffCategory BuffCat, string strName, string strDesc, string strIconLabel, optional bool DisplayInUI, optional string strStatusIcon, optional name opAbilitySource)
@@ -167,11 +167,11 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_BayonetCharge()
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'BayonetCharge');
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
-	Template.IconImage = "img:///Texture2D'UILibrary_LWAlienPack.LWCenturion_AbilityBayonetCharge64'"; 
+	Template.IconImage = "img:///Texture2D'UILibrary_LWAlienPack.LWCenturion_AbilityBayonetCharge64'";
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
-	
+
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
 	ActionPointCost.bfreeCost = false;
@@ -251,7 +251,7 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_WarCry()
 	local X2AbilityCooldown					Cooldown;
 	local X2Condition_UnitProperty			MultiTargetProperty;
 	local X2Effect_WarCry					StatEffect;
-	local X2AbilityTargetStyle				TargetStyle; 
+	local X2AbilityTargetStyle				TargetStyle;
 	local X2AbilityMultiTarget_Radius		RadiusMultiTarget;
 	local int								i;
 	local string							AlienName;
@@ -270,7 +270,7 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_WarCry()
 	Cooldown = new class'X2AbilityCooldown';
 	Cooldown.iNumTurns = default.WARCRY_COOLDOWN;
 	Template.AbilityCooldown = Cooldown;
-	
+
 	Template.AbilityToHitCalc = default.Deadeye;
 
 	TargetStyle = new class 'X2AbilityTarget_Self';
@@ -282,7 +282,7 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_WarCry()
 	RadiusMultiTarget.fTargetRadius = default.WARCRY_RADIUS_METERS;
 	RadiusMultiTarget.bIgnoreBlockingCover = true;
 	Template.AbilityMultiTargetStyle = RadiusMultiTarget;
-	
+
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
 
 	MultiTargetProperty = new class'X2Condition_UnitProperty';
@@ -294,14 +294,14 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_WarCry()
     MultiTargetProperty.ExcludePanicked = true;
 	MultiTargetProperty.ExcludeRobotic = true;
 	MultiTargetProperty.ExcludeStunned = true;
-	
+
     Template.AbilityMultiTargetConditions.AddItem(MultiTargetProperty);
 
 	StatEffect = new class'X2Effect_WarCry';
 
 	StatEffect.BuildPersistentEffect(default.WARCRY_DURATION, false, true, false, eGameRule_PlayerTurnEnd);
 	//StatEffect.SetDisplayInfo (ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName); // adjust
-	StatEffect.SetDisplayInfo (ePerkBuff_Bonus, Template.LocFriendlyName, class'X2Effect_WarCry'.default.strWarCryFriendlyDesc, Template.IconImage,,, Template.AbilitySourceName); 
+	StatEffect.SetDisplayInfo (ePerkBuff_Bonus, Template.LocFriendlyName, class'X2Effect_WarCry'.default.strWarCryFriendlyDesc, Template.IconImage,,, Template.AbilitySourceName);
 
 	StatEffect.DuplicateResponse = eDupe_Refresh;
 
@@ -316,11 +316,11 @@ static function X2AbilityTemplate CreateMutonM2_LWAbility_WarCry()
 
 	StatEffect.AddPersistentStatChange (eStat_Offense, float (default.WARCRY_MUTON_OFFENSE_BONUS), true);
 	StatEffect.AddPersistentStatChange (eStat_Mobility, float (default.WARCRY_MUTON_MOBILITY_BONUS), true);
-	StatEffect.AddPersistentStatChange (eStat_Will, float (default.WARCRY_MUTON_WILL_BONUS), true);			
+	StatEffect.AddPersistentStatChange (eStat_Will, float (default.WARCRY_MUTON_WILL_BONUS), true);
 
 	StatEffect.AddPersistentStatChange (eStat_Offense, float (default.WARCRY_OTHER_OFFENSE_BONUS), false);
 	StatEffect.AddPersistentStatChange (eStat_Mobility, float (default.WARCRY_OTHER_MOBILITY_BONUS), false);
-	StatEffect.AddPersistentStatChange (eStat_Will, float (default.WARCRY_OTHER_WILL_BONUS), false);			
+	StatEffect.AddPersistentStatChange (eStat_Will, float (default.WARCRY_OTHER_WILL_BONUS), false);
 
 	//Template.AddShooterEffect(StatEffect); This would make Centurion gain bonuses from own War Cry
 	Template.AddMultiTargetEffect(StatEffect);
@@ -340,7 +340,7 @@ function WarCry_BuildVisualization(XComGameState VisualizeGameState, out array<V
     local VisualizationTrack				EmptyTrack, BuildTrack, TargetTrack;
     local X2Action_PlayAnimation			PlayAnimationAction;
 	local X2Action_PlaySoundAndFlyOver		SoundAndFlyover, SoundAndFlyoverTarget;
-	local XComGameState_Ability				Ability;	
+	local XComGameState_Ability				Ability;
 	local XComGameState_Effect				EffectState;
 	local XComGameState_Unit				UnitState;
 
@@ -352,10 +352,10 @@ function WarCry_BuildVisualization(XComGameState VisualizeGameState, out array<V
     BuildTrack.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
     BuildTrack.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
     BuildTrack.TrackActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
-    
+
     SoundAndFlyover = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTrack(BuildTrack, context));
     SoundAndFlyover.SetSoundAndFlyOverParameters(none, Ability.GetMyTemplate().LocFlyOverText, 'None', eColor_Alien);
-	
+
 	PlayAnimationAction = X2Action_PlayAnimation(class'X2Action_PlayAnimation'.static.AddToVisualizationTrack(BuildTrack, context));
     PlayAnimationAction.Params.AnimName = 'HL_WarCry';
 	PlayAnimationAction.bFinishAnimationWait = true;
@@ -379,7 +379,7 @@ function WarCry_BuildVisualization(XComGameState VisualizeGameState, out array<V
 				}
 		}
 	}
-	
+
 }
 
 
@@ -394,7 +394,7 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	local array<name>                       SkipExclusions;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWDroneShock');
-	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_lightningfield"; 
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_lightningfield";
 	Template.Hostility = eHostility_Offensive;
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 
@@ -447,14 +447,14 @@ static function X2AbilityTemplate CreateDroneShockAbility()
 	// Targeting Method
 	Template.TargetingMethod = class'X2TargetingMethod_OverTheShoulder';
 	Template.bUsesFiringCamera = true;
-	Template.CinescriptCameraType = "StandardGunFiring";	
+	Template.CinescriptCameraType = "StandardGunFiring";
 
 	Template.AssociatedPassives.AddItem('HoloTargeting');
 
 	Template.CustomFireAnim = 'NO_ArcStun';
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
-	
+
 	return Template;
 }
 
@@ -482,7 +482,7 @@ static function X2DataTemplate CreateDroneRepairAbility()
 	SingleTarget = new class'X2AbilityTarget_Single';
 	SingleTarget.OnlyIncludeTargetsInsideWeaponRange = true;
 	Template.AbilityTargetStyle = SingleTarget;
-	
+
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = default.DRONE_REPAIR_ACTION_COST;
 	ActionPointCost.bConsumeAllPoints = false;
@@ -534,14 +534,14 @@ static function X2AbilityTemplate AddDroneMeleeStun()
 	local X2AbilityToHitCalc_StandardAim HitCalc;
 	//local X2Effect_ApplyWeaponDamage PhysicalDamageEffect;
 	local X2Effect_Stunned				    StunnedEffect;
-	local X2Condition_UnitProperty			AdjacencyCondition;	
+	local X2Condition_UnitProperty			AdjacencyCondition;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWDroneMeleeStun');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_stun";
 
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.Hostility = eHostility_Offensive;
-	
+
 	Template.bShowActivation = true;
 	//Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
 	//Template.bDontDisplayInAbilitySummary = true;
@@ -639,7 +639,7 @@ static function X2DataTemplate CreateMassMindspinAbility()
 	ToHitCalc = new class'X2AbilityToHitCalc_StatCheck_UnitVsUnit';
 	Template.AbilityToHitCalc = ToHitCalc;
 
-	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);	
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
 	Template.AddShooterEffectExclusions();
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
@@ -654,12 +654,12 @@ static function X2DataTemplate CreateMassMindspinAbility()
 
 	ConeMultiTarget = new class'X2AbilityMultiTarget_Cone';
 	ConeMultiTarget.bExcludeSelfAsTargetIfWithinRadius = true;
-	ConeMultiTarget.ConeEndDiameter = 12 * default.MASS_MINDSPIN_LW_CONE_END_DIAMETER; 
+	ConeMultiTarget.ConeEndDiameter = 12 * default.MASS_MINDSPIN_LW_CONE_END_DIAMETER;
 	ConeMultiTarget.fTargetRadius = 99.0;
-	ConeMultiTarget.ConeLength=default.MASS_MINDSPIN_LW_CONE_LENGTH; 
+	ConeMultiTarget.ConeLength=default.MASS_MINDSPIN_LW_CONE_LENGTH;
 	ConeMultiTarget.bIgnoreBlockingCover = true;
 	Template.AbilityMultiTargetStyle = ConeMultiTarget;
-	
+
 	CursorTarget = new class'X2AbilityTarget_Cursor';
 	CursorTarget.bRestrictToWeaponRange=false;
 	Template.AbilityTargetStyle = CursorTarget;
@@ -675,7 +675,7 @@ static function X2DataTemplate CreateMassMindspinAbility()
 	UnitPropertyCondition.TreatMindControlledSquadmateAsHostile=false;
 	Template.AbilityMultiTargetConditions.AddItem(UnitPropertyCondition);
 	Template.AbilityTargetConditions.AddItem(UnitPropertyCondition);
-	
+
 	//TargetVisibilityCondition = new class'X2Condition_Visibility';
 	//TargetVisibilityCondition.bRequireGameplayVisible = true;
 	//Template.AbilityMultiTargetConditions.AddItem(TargetVisibilityCondition);
@@ -728,7 +728,7 @@ static function X2DataTemplate CreateMassMindspinAbility()
 
 	// This action is considered 'hostile' and can be interrupted!
 	Template.BuildInterruptGameStateFn = TypicalAbility_BuildInterruptGameState;
-	
+
 	//Need FX on targets
 
 	return Template;
@@ -747,7 +747,7 @@ static function X2DataTemplate CreateMassReanimateAbility()
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'MassReanimation_LW');
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
-	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityMassreanimate"; 
+	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityMassreanimate";
 	Template.AbilitySourceName = 'eAbilitySource_Psionic';
 	Template.Hostility = eHostility_Neutral;
 
@@ -762,10 +762,10 @@ static function X2DataTemplate CreateMassReanimateAbility()
 	Template.AbilityTargetStyle = CursorTarget;
 
 	//Template.AbilityTargetStyle = default.SelfTarget;
-	
+
 	Template.AbilityToHitCalc = default.Deadeye;
 	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
-	
+
 	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
 	Template.AddShooterEffectExclusions();
 
@@ -977,7 +977,7 @@ static function X2DataTemplate CreateReadyForAnythingAbility()
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'ReadyForAnything');
 
-	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityReadyForAnything"; 
+	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityReadyForAnything";
 
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
 	Template.Hostility = eHostility_Neutral;
@@ -997,7 +997,7 @@ static function X2DataTemplate CreateReadyForAnythingAbility()
 	ActionPointEffect.BuildPersistentEffect (1, true, false);
 	ActionPointEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage,,, Template.AbilitySourceName);
 	Template.AddTargetEffect(ActionPointEffect);
-	
+
 	Template.AdditionalAbilities.AddItem('ReadyForAnythingFlyover');
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -1027,7 +1027,7 @@ static function X2DataTemplate ReadyForAnythingFlyover()
 	EventListener.ListenerData.Filter = eFilter_Unit;
 	EventListener.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
 	Template.AbilityTriggers.AddItem(EventListener);
-	
+
 	Template.CinescriptCameraType = "Overwatch";
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
@@ -1045,7 +1045,7 @@ simulated function ReadyForAnything_BuildVisualization(XComGameState VisualizeGa
 	local X2Action_PlaySoundAndFlyOver SoundAndFlyOver;
 	local StateObjectReference          InteractingUnitRef;
 	local XComGameState_Ability Ability;
-		
+
 	History = `XCOMHISTORY;
     context = XComGameStateContext_Ability(VisualizeGameState.GetContext());
 	InteractingUnitRef = Context.InputContext.SourceObject;
@@ -1069,7 +1069,7 @@ static function X2AbilityTemplate CreateChryssalidSoldierSlashAbility()
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ChryssalidSoldierSlash');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_chryssalid_slash";
-	
+
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
 	Template.Hostility = eHostility_Neutral;
@@ -1095,7 +1095,7 @@ static function X2AbilityTemplate CreateHiveQueenSlashAbility()
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'HiveQueenSlash');
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_chryssalid_slash";
-	
+
 	Template.AbilitySourceName = 'eAbilitySource_Standard';
 	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
 	Template.Hostility = eHostility_Neutral;

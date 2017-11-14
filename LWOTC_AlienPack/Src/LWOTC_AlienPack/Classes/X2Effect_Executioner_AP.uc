@@ -4,7 +4,7 @@
 //  PURPOSE: Sets up Executioner perk effect
 //--------------------------------------------------------------------------------------- 
 
-class X2Effect_Executioner_AP extends X2Effect_Persistent config (LW_AlienPack);
+class X2Effect_Executioner_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 var config int EXECUTIONER_AIM_BONUS;
 var config int EXECUTIONER_CRIT_BONUS;

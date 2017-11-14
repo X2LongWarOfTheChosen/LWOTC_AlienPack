@@ -18,7 +18,7 @@ https://protect-eu.mimecast.com/s/MLd2BcV8ZDXcb
 * 变种人枪手，压制火力专家
 * 他们中的许多拥有升级版本，会出现在战役晚期，并且模组也包括了升级的毒蛇怪和执政官，你需要面对共计29种新敌人。
 
-模组还包括了ini编辑系统，可利用基础游戏部件编辑并为新种类的变种人士兵更改配色。一些外星人也能通过此系统更改配色。该ini文件管理的是XComLW_AlienVariations。
+模组还包括了ini编辑系统，可利用基础游戏部件编辑并为新种类的变种人士兵更改配色。一些外星人也能通过此系统更改配色。该ini文件管理的是XComLWOTC_AlienVariations。
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ https://protect-eu.mimecast.com/s/MLd2BcV8ZDXcb
 
 手动卸载模组
 
-1) 移除目录 \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) 移除目录 \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 注意：从该模组的v1升级（仅包含异变者百夫长）并载入一个存在异变者百夫长的战术存档可能会导致bug。
 

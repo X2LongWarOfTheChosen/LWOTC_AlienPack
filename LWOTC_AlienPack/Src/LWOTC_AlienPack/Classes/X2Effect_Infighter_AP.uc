@@ -3,7 +3,7 @@
 //  AUTHOR:  John Lumpkin (Long War Studios)
 //  PURPOSE: Sets up dodge bonuses for Infighter (Soldier gains +25 dodge against attacks within four tiles (including melee)
 //---------------------------------------------------------------------------------------
-class X2Effect_Infighter_AP extends X2Effect_Persistent config (LW_AlienPack);
+class X2Effect_Infighter_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 var config int INFIGHTER_DODGE_BONUS;
 var config int INFIGHTER_MAX_TILES;

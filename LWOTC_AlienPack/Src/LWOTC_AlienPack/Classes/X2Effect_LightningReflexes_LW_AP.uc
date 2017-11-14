@@ -1,4 +1,4 @@
-Class X2Effect_LightningReflexes_LW_AP extends X2Effect_Persistent config (LW_AlienPack);
+Class X2Effect_LightningReflexes_LW_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 var config int LR_LW_FIRST_SHOT_PENALTY;
 var config int LR_LW_PENALTY_REDUCTION_PER_SHOT;

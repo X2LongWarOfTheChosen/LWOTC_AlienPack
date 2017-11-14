@@ -3,7 +3,7 @@
 //  AUTHOR:  John Lumpkin (Long War Studios)
 //  PURPOSE: Sets up armor bonuses for Repair Servos effect
 //---------------------------------------------------------------------------------------
-class X2Effect_RepairServos extends X2Effect_BonusArmor config (LW_AlienPack);
+class X2Effect_RepairServos extends X2Effect_BonusArmor config (LWOTC_AlienPack);
 
 var int RepairServosBonusArmor;
 

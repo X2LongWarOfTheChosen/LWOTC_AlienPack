@@ -18,7 +18,7 @@ Ten mod wprowadza do kampanii nowych obcych i żołnierzy ADVENT-u:
 * Artylerzysta ADVENT-u: specjalizuje się w przygważdżaniu wroga
 * Wielu z tych przeciwników występuje też w ulepszonych wersjach, które pojawiają się w późniejszym etapie kampanii. Mod zawiera też ulepszone żmije i archonów. W sumie przyjdzie wam zmierzyć się z 29 nowymi wrogami.
 
-Mod zawiera też system konfiguracyjny umożliwiający tworzenie i malowanie nowych rodzajów żołnierzy ADVENT-u z wykorzystaniem podstawowych elementów dostępnych w grze. Za pomocą tego systemu można też zmienić kolory niektórych obcych. Pliki ini odpowiedzialny za tę funkcję to XComLW_AlienVariations.
+Mod zawiera też system konfiguracyjny umożliwiający tworzenie i malowanie nowych rodzajów żołnierzy ADVENT-u z wykorzystaniem podstawowych elementów dostępnych w grze. Za pomocą tego systemu można też zmienić kolory niektórych obcych. Pliki ini odpowiedzialny za tę funkcję to XComLWOTC_AlienVariations.
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ Instalacja ręczna bez użycia Steam Workshop:
 
 Ręczne usunięcie modu
 
-1) Usuń folder \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) Usuń folder \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 Uwaga: Aktualizacja z wersji v1 tego modu (w której znajduje się muton centurion) i wczytywanie zapisów taktycznych, w których znajduje się muton centurion, może spowodować problemy z działaniem.
 

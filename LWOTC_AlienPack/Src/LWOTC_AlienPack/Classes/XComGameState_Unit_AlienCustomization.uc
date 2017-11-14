@@ -3,10 +3,10 @@
 //  AUTHOR:  Amineri / Long War Studios
 //  PURPOSE: This component stores the appearance and related info for a single customizated alien unit
 //---------------------------------------------------------------------------------------
-class XComGameState_Unit_AlienCustomization extends XComGameState_BaseObject 
-		dependson(XComGameState_AlienCustomizationManager) config(LW_AlienPack);
+class XComGameState_Unit_AlienCustomization extends XComGameState_BaseObject
+		dependson(XComGameState_AlienCustomizationManager) config(LWOTC_AlienPack);
 
-`include(LW_AlienPack\Src\LW_AlienPack.uci)
+`include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
 var bool bAutomatic;
 var float fScale;
@@ -15,7 +15,7 @@ var transient XComUnitPawn Pawn;
 
 //abilities and stat changes will be persistently stored in the owning XComGameState_Unit, so don't have to be stored explicitly here
 // changes to pawns are not persistent, and so have to be stored and re-applied on load
-var LWObjectAppearance BodyAppearance;	
+var LWObjectAppearance BodyAppearance;
 var LWObjectAppearance PrimaryWeaponAppearance;
 var LWObjectAppearance SecondaryWeaponAppearance;
 var TAppearance m_kAppearance;
@@ -54,7 +54,7 @@ simulated function InitComponent()
 
 static function XComGameState_Unit_AlienCustomization GetCustomizationComponent(XComGameState_Unit Unit)
 {
-	if (Unit != none) 
+	if (Unit != none)
 		return XComGameState_Unit_AlienCustomization(Unit.FindComponentObject(class'XComGameState_Unit_AlienCustomization'));
 	return none;
 }
@@ -145,7 +145,7 @@ function EventListenerReturn OnCinematicPawnCreation(Object EventData, Object Ev
 
 	if(UnitState == none || CinematicPawn == none)
 		return ELR_NoInterrupt;
-		
+
 	if(UnitState.ObjectID != OwningObjectId)
 	{
 		`REDSCREEN("AlienCustomization : OnCinematicPawnCreation called with mismatching Unit");
@@ -190,7 +190,7 @@ function EventListenerReturn OnCinematicPawnCreation(Object EventData, Object Ev
 			ApplyItemMaterialCustomization(SecondaryWeapon, SecondaryWeaponAppearance, SecondaryWeaponPawn);
 	}
 
-	
+
 	return ELR_NoInterrupt;
 }
 
@@ -271,7 +271,7 @@ function bool ApplyItemMaterialCustomization(XComGameState_Item ItemState, LWObj
 
 	MeshComp = WeaponPawn.Mesh;
 	UpdateMaterials(MeshComp, Appearance);
-	
+
 	for(i = 0; i < SkeletalMeshComponent(MeshComp).Attachments.Length; ++i)
 	{
 		AttachedComponent = MeshComponent(SkeletalMeshComponent(MeshComp).Attachments[i].Component);
@@ -327,7 +327,7 @@ simulated function UpdateIndividualMaterial(MeshComponent MeshComp, MaterialInst
 	// It is possible for there to be MITVs in these slots, so check
 	if (MIC != none)
 	{
-				
+
 		ParentMat = MIC.Parent;
 		while (!ParentMat.IsA('Material'))
 		{
@@ -355,7 +355,7 @@ simulated function UpdateIndividualMaterial(MeshComponent MeshComp, MaterialInst
 					MIC.SetScalarParameterValue(ScalarParameter.ParameterName, ScalarParameter.ScalarValue);
 				}
 				break;
-			case 'Alien_SD_Cloth':						
+			case 'Alien_SD_Cloth':
 				break;
 			case 'Alien_SD_SSS':
 				foreach Appearance.ColorParameters(ColorParameter)
@@ -396,7 +396,7 @@ simulated function RequestFullPawnContent()
 		//PawnContentRequests.AddItem(kRequest);
 	//}
 
-	if(m_kAppearance.nmHelmet != '') 
+	if(m_kAppearance.nmHelmet != '')
 	{
 		kRequest.ContentCategory = 'Helmets';
 		kRequest.TemplateName = m_kAppearance.nmHelmet;
@@ -404,7 +404,7 @@ simulated function RequestFullPawnContent()
 		PawnContentRequests.AddItem(kRequest);
 	}
 
-	if(m_kAppearance.nmArms != '')		  
+	if(m_kAppearance.nmArms != '')
 	{
 		kRequest.ContentCategory = 'Arms';
 		kRequest.TemplateName = m_kAppearance.nmArms;
@@ -420,7 +420,7 @@ simulated function RequestFullPawnContent()
 		PawnContentRequests.AddItem(kRequest);
 	}
 
-	if(m_kAppearance.nmRightArm != '')		   
+	if(m_kAppearance.nmRightArm != '')
 	{
 		kRequest.ContentCategory = 'RightArm';
 		kRequest.TemplateName = m_kAppearance.nmRightArm;
@@ -428,7 +428,7 @@ simulated function RequestFullPawnContent()
 		PawnContentRequests.AddItem(kRequest);
 	}
 
-	if(m_kAppearance.nmLegs != '')		   
+	if(m_kAppearance.nmLegs != '')
 	{
 		kRequest.ContentCategory = 'Legs';
 		kRequest.TemplateName = m_kAppearance.nmLegs;
@@ -457,16 +457,16 @@ simulated function RequestFullPawnContent()
 }
 
 simulated function MakeAllContentRequests()
-{	
+{
 	local X2BodyPartTemplate PartTemplate;
 	local X2BodyPartTemplateManager PartManager;
 	local Delegate<OnBodyPartLoadedDelegate> BodyPartLoadedFn;
 	local int i;
-	
+
 	PartManager = class'X2BodyPartTemplateManager'.static.GetBodyPartTemplateManager();
 
 	for(i = 0; i < PawnContentRequests.Length; ++i)
-	{		
+	{
 		PartTemplate = PartManager.FindUberTemplate(string(PawnContentRequests[i].ContentCategory), PawnContentRequests[i].TemplateName);
 		if (PartTemplate != none) //If the part couldn't be found, then just ignore it. This could happen when loading a save that had DLC installed that we don't have
 		{
@@ -485,7 +485,7 @@ simulated function MakeAllContentRequests()
 				if(BodyPartLoadedFn != none)
 				{
 					BodyPartLoadedFn(PawnContentRequests[i]);
-				}				
+				}
 			}
 			else
 			{
@@ -502,7 +502,7 @@ simulated function OnTorsoLoaded(PawnContentRequest ContentRequest)
 	Pawn.ResetMaterials(Pawn.m_kTorsoComponent);
 	UpdateMaterials(Pawn.m_kTorsoComponent, BodyAppearance);
 	Pawn.m_kTorsoComponent.SetParentAnimComponent(Pawn.Mesh);
-	
+
 	Pawn.Mesh.AppendSockets(Pawn.m_kTorsoComponent.Sockets, true);
 	Pawn.MarkAuxParametersAsDirty(Pawn.m_bAuxParamNeedsPrimary, Pawn.m_bAuxParamNeedsSecondary, Pawn.m_bAuxParamUse3POutline);
 }
@@ -514,7 +514,7 @@ simulated function OnHelmetLoaded(PawnContentRequest ContentRequest)
 	Pawn.ResetMaterials(Pawn.m_kHelmetMC);
 	UpdateMaterials(Pawn.m_kHelmetMC, BodyAppearance);
 	Pawn.m_kHelmetMC.SetParentAnimComponent(Pawn.Mesh);
-	
+
 	Pawn.Mesh.AppendSockets(Pawn.m_kHelmetMC.Sockets, true);
 	Pawn.MarkAuxParametersAsDirty(Pawn.m_bAuxParamNeedsPrimary, Pawn.m_bAuxParamNeedsSecondary, Pawn.m_bAuxParamUse3POutline);
 }
@@ -530,7 +530,7 @@ simulated function OnLegsLoaded(PawnContentRequest ContentRequest)
 		Pawn.m_kLegsMC.SetMaterial(0, LegsContent.OverrideMaterial);
 	}
 	Pawn.m_kLegsMC.SetParentAnimComponent(Pawn.Mesh);
-	
+
 	Pawn.Mesh.AppendSockets(Pawn.m_kLegsMC.Sockets, true);
 	Pawn.MarkAuxParametersAsDirty(Pawn.m_bAuxParamNeedsPrimary, Pawn.m_bAuxParamNeedsSecondary, Pawn.m_bAuxParamUse3POutline);
 }
@@ -539,14 +539,14 @@ simulated function OnArmsLoaded(PawnContentRequest ContentRequest)
 {
 	local SkeletalMeshComponent UseMeshComponent;
 	local SkeletalMesh UseSkeletalMesh;
-	local XComArmsContent UseArmsContent;	
-	
-	UseArmsContent = XComArmsContent(ContentRequest.kContent);		
+	local XComArmsContent UseArmsContent;
+
+	UseArmsContent = XComArmsContent(ContentRequest.kContent);
 	UseSkeletalMesh = UseArmsContent.SkeletalMesh;
 
 	switch(ContentRequest.ContentCategory)
 	{
-		case 'Arms':		
+		case 'Arms':
 			if(Pawn.m_kLeftArm != none && Pawn.m_kLeftArm.SkeletalMesh != none)
 				Pawn.m_kLeftArm.SetSkeletalMesh(none);
 
@@ -601,7 +601,7 @@ simulated function OnArmsLoaded(PawnContentRequest ContentRequest)
 			LeftArmDecoContent = UseArmsContent;
 			break;
 
-		case 'RightArmDeco':		
+		case 'RightArmDeco':
 			UseMeshComponent = Pawn.m_kRightArmDeco;
 
 			if(UseSkeletalMesh == none)
@@ -617,7 +617,7 @@ simulated function OnArmsLoaded(PawnContentRequest ContentRequest)
 		Pawn.DetachComponent(UseMeshComponent);
 		UseMeshComponent = new(Pawn) class'SkeletalMeshComponent';
 	}
-	
+
 	switch(ContentRequest.ContentCategory)
 	{
 		case 'Arms':
@@ -637,7 +637,7 @@ simulated function OnArmsLoaded(PawnContentRequest ContentRequest)
 			break;
 	}
 
-	UseMeshComponent.LastRenderTime = Pawn.WorldInfo.TimeSeconds;	
+	UseMeshComponent.LastRenderTime = Pawn.WorldInfo.TimeSeconds;
 	UseMeshComponent.SetSkeletalMesh(UseSkeletalMesh);
 	Pawn.ResetMaterials(UseMeshComponent);
 	UpdateMaterials(UseMeshComponent, BodyAppearance);
@@ -648,7 +648,7 @@ simulated function OnArmsLoaded(PawnContentRequest ContentRequest)
 
 	if(UseMeshComponent.SkeletalMesh != none)
 	{
-		UseMeshComponent.SetParentAnimComponent(Pawn.Mesh);		
+		UseMeshComponent.SetParentAnimComponent(Pawn.Mesh);
 		Pawn.Mesh.AppendSockets(UseMeshComponent.Sockets, true);
 	}
 
@@ -668,10 +668,10 @@ function AddGenericBodyPartContent()
 	local XComBodyPartContent BodyPartContent;
 	local XComPawnPhysicsProp PhysicsProp;
 	local SkeletalMeshComponent SkelMeshComp;
-	local XComContentManager ContentMgr;	
+	local XComContentManager ContentMgr;
 
 	ContentMgr = `CONTENT;
-		
+
 	for(GenericAttachmentIndex = 0; GenericAttachmentIndex < GenericBodyPartArchetypes.Length; ++GenericAttachmentIndex)
 	{
 		BodyPartContent = XComBodyPartContent(ContentMgr.RequestGameArchetype(GenericBodyPartArchetypes[GenericAttachmentIndex], self, none, false));
@@ -686,20 +686,20 @@ function AddGenericBodyPartContent()
 				{
 					PhysicsProp = Pawn.Spawn(class'XComPawnPhysicsProp', Pawn);
 					PhysicsProp.CollisionComponent = PhysicsProp.SkeletalMeshComponent;
-					PhysicsProp.SetBase(Pawn);					
+					PhysicsProp.SetBase(Pawn);
 					PhysicsProp.SkeletalMeshComponent.SetSkeletalMesh(BodyPartContent.SkeletalMesh);
 
 					Pawn.Mesh.AttachComponentToSocket(PhysicsProp.SkeletalMeshComponent, BodyPartContent.SocketName, BodyPartContent.SocketName);
 
-					//Do NOT set bForceUpdateAttachmentsInTick because we need the cape to update in its selected tick group when attached to a ragdoll					
+					//Do NOT set bForceUpdateAttachmentsInTick because we need the cape to update in its selected tick group when attached to a ragdoll
 					if(BodyPartContent.UsePhysicsAsset != none)
-					{						
+					{
 						PhysicsProp.SkeletalMeshComponent.SetPhysicsAsset(BodyPartContent.UsePhysicsAsset, true);
 						PhysicsProp.SkeletalMeshComponent.SetHasPhysicsAssetInstance(true);
 						PhysicsProp.SkeletalMeshComponent.WakeRigidBody();
-						PhysicsProp.SkeletalMeshComponent.PhysicsWeight = 1.0f;		
-						PhysicsProp.SetTickGroup(TG_PostUpdateWork);						
-					}					
+						PhysicsProp.SkeletalMeshComponent.PhysicsWeight = 1.0f;
+						PhysicsProp.SetTickGroup(TG_PostUpdateWork);
+					}
 
 					PhysicsProp.SkeletalMeshComponent.SetAcceptsDynamicDecals(FALSE); // Fix for blood puddles appearing on the hair.
 					PhysicsProp.SkeletalMeshComponent.SetAcceptsStaticDecals(FALSE);
@@ -716,12 +716,12 @@ function AddGenericBodyPartContent()
 		}
 		else if(BodyPartContent.SkeletalMesh != none)
 		{
-			SkelMeshComp = new(Pawn) class'SkeletalMeshComponent';						
+			SkelMeshComp = new(Pawn) class'SkeletalMeshComponent';
 			SkelMeshComp.SetSkeletalMesh(BodyPartContent.SkeletalMesh);
-			SkelMeshComp.SetParentAnimComponent(Pawn.Mesh);			
+			SkelMeshComp.SetParentAnimComponent(Pawn.Mesh);
 			Pawn.Mesh.AppendSockets(SkelMeshComp.Sockets, true);
 			Pawn.AttachComponent(SkelMeshComp);
-			Pawn.AttachedMeshes.AddItem(SkelMeshComp);			
+			Pawn.AttachedMeshes.AddItem(SkelMeshComp);
 		}
-	}	
+	}
 }

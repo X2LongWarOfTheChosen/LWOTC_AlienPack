@@ -33,10 +33,13 @@
     <Content Include="Config\XComGameData_WeaponData.ini">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Config\XComLWOTC_AlienPackPack.ini">
+    <Content Include="Config\XComLWOTC_AlienPack.ini">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComLWOTC_AlienPackVariations.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLWOTC_PerkPack.ini">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComMissions.ini">

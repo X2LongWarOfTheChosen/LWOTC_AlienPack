@@ -4,7 +4,7 @@
 //  PURPOSE: Sets up defense bonus from Tactical Sense
 //--------------------------------------------------------------------------------------- 
 
-class X2Effect_TacticalSense_AP extends X2Effect_Persistent config (LW_AlienPack);
+class X2Effect_TacticalSense_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
 var config int TACTICAL_SENSE_DEF_BONUS_PER_ENEMY;
 var config int TACTICAL_SENSE_MAX_DEF_BONUS;

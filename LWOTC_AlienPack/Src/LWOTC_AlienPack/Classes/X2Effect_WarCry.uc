@@ -4,7 +4,7 @@
 //  PURPOSE: Creates WarCry effect, which provides stat boosts to nearby friendly units
 //--------------------------------------------------------------------------------------- 
 Class X2Effect_WarCry extends X2Effect_ModifyStats
-	config (LW_AlienPack);
+	config (LWOTC_AlienPack);
 
 var array<StatChange> m_aStatChangesHigh;
 var array<StatChange> m_aStatChangesLow;

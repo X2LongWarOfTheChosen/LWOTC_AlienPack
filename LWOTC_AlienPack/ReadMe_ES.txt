@@ -18,7 +18,7 @@ Este mod añade a la campaña una serie de nuevos enemigos alienígenas y de ADV
 * Artillero de ADVENT, un especialista en la contención.
 * Muchos de estos tienen versiones mejoradas que aparecen más adelante en la campaña. El mod también incluye Víboras y Arcontes mejorados, lo que da un total de 29 enemigos nuevos a los que enfrentarse.
 
-Además, este mod incluye un sistema configurable mediante archivos .ini que permite diseñar y colorear nuevos tipos de soldados de ADVENT usando piezas del juego básico. Este sistema también permite recolorear algunos alienígenas. El archivo .ini que se encarga de esto es XComLW_AlienVariations.
+Además, este mod incluye un sistema configurable mediante archivos .ini que permite diseñar y colorear nuevos tipos de soldados de ADVENT usando piezas del juego básico. Este sistema también permite recolorear algunos alienígenas. El archivo .ini que se encarga de esto es XComLWOTC_AlienVariations.
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ Instalación manual sin Steam Workshop
 
 Desinstalar el mod manualmente
 
-1) Elimina la carpeta \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) Elimina la carpeta \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 Nota: la actualización desde la v1 de este mod (que solo incluía al Centurión Mutón) y la carga de archivos guardados tácticos en los que aparezca un Centurión Mutón puede dar lugar a errores.
 

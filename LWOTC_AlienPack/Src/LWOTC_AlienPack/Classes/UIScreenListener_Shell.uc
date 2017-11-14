@@ -3,11 +3,11 @@
 //  AUTHOR:  Amineri / Long War Studios
 //
 //  PURPOSE: Early game hook to allow template modifications.
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
-class UIScreenListener_Shell extends UIScreenListener config(LW_AlienPack);
+class UIScreenListener_Shell extends UIScreenListener config(LWOTC_AlienPack);
 
-`include(LW_AlienPack\Src\LW_AlienPack.uci)
+`include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
 struct AIJobInfo_Addition
 {
@@ -25,7 +25,7 @@ struct InclusionExclusionList_Addition
 };
 
 var config array<AIJobInfo_Addition> JobListingAdditions; // Definition of qualifications for each job for this new character
-var config array<InclusionExclusionList_Addition> InclusionExclusionMods; 
+var config array<InclusionExclusionList_Addition> InclusionExclusionMods;
 
 var private bool HasInited;
 
@@ -102,11 +102,11 @@ simulated function UpdateAIJobs()
 		//JobInfo = JobMgr.GetJobListing(Addition.JobName);
 		JobIdx = JobMgr.JobListings.Find('JobName', Addition.JobName);
 
-		if(JobMgr.JobListings[JobIdx].JobName == '') 
+		if(JobMgr.JobListings[JobIdx].JobName == '')
 		{
 			`REDSCREEN("UpdateAIJobs : Invalid job name = " $ Addition.JobName);
 			continue;
-		}		
+		}
 
 		if(Addition.BeforeUnit != '')
 		{
@@ -150,4 +150,3 @@ defaultProperties
 {
     ScreenClass = none
 }
-

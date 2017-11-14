@@ -3,7 +3,7 @@
 //  AUTHOR:  Amineri (Long War Studios)
 //  PURPOSE: Utility Data for LW AlienPack
 //---------------------------------------------------------------------------------------
-class LWAlienPack_Utilities extends Object config(LW_AlienPack);
+class LWAlienPack_Utilities extends Object config(LWOTC_AlienPack);
 
 `include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 

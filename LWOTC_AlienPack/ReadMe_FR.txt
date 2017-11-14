@@ -18,7 +18,7 @@ Ce mod vient ajouter une série de nouveaux ennemis extraterrestres et d'ADVENT 
 * Tirailleur d'ADVENT : un spécialiste de la suppression.
 * La plupart de ces ennemis existent également en versions améliorées qui apparaissent plus tard dans la campagne, et le mod propose également des Vipères et des Archons modifiés, pour un total de 29 ennemis inédits.
 
-Le mod inclut également un système configurable via fichier INI permettant de créer et colorer de nouveaux types de soldats d'ADVENT via des éléments du jeu de base. Certains extraterrestres peuvent également être colorés grâce à ce système. Le fichier INI en question s'appelle XComLW_AlienVariations.
+Le mod inclut également un système configurable via fichier INI permettant de créer et colorer de nouveaux types de soldats d'ADVENT via des éléments du jeu de base. Certains extraterrestres peuvent également être colorés grâce à ce système. Le fichier INI en question s'appelle XComLWOTC_AlienVariations.
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ Installation manuelle en dehors de Steam Workshop :
 
 Désinstallation manuelle du mod :
 
-1) Supprimer le répertoire \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) Supprimer le répertoire \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 Remarque : mise à niveau de la v1 de ce mod (qui n'incluait que le Centurion Goliath). Le chargement des sauvegardes tactiques incluant un Centurion Goliath peut entraîner des problèmes de fonctionnement.
 

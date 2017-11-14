@@ -2,15 +2,15 @@
 //  FILE:    X2Effect_AdventGrenadeLauncher
 //  AUTHOR:  Amineri (Long War Studios)
 //  PURPOSE: Links up any carried grenades with a grenade launcher
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
 class X2Effect_AdventGrenadeLauncher extends X2Effect;
 
-`include(LW_AlienPack\Src\LW_AlienPack.uci)
+`include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
 simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffectParameters, XComGameState_BaseObject kNewTargetState, XComGameState NewGameState, XComGameState_Effect NewEffectState)
 {
-	local XComGameState_Unit					UnitState; 
+	local XComGameState_Unit					UnitState;
 	local XComGameState_Item					InventoryItem;
 	local array<XComGameState_Item> CurrentInventory;
 	local X2AbilityTemplateManager				AbilityManager;
@@ -41,7 +41,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 	foreach CurrentInventory(InventoryItem)
 	{
 		`APTRACE("ADVENT Grenade Launcher: Checking item" @ InventoryItem.GetMyTemplateName());
-		if (InventoryItem.bMergedOut) 
+		if (InventoryItem.bMergedOut)
 			continue;
 
 		if (X2GrenadeTemplate(InventoryItem.GetMyTemplate()) != none)

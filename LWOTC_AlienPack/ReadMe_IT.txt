@@ -18,7 +18,7 @@ Questo mod aggiunge alla campagna una serie di nuovi nemici, alieni e ADVENT:
 * Un mitragliere ADVENT, un soldato specializzato nelle azioni di soppressione
 * Nella campagna compariranno versioni potenziate di molti di questi nemici; il mod include anche Vipere e Archon potenziati, per un totale di 29 nuovi nemici da affrontare.
 
-Il mod comprende la possibilità di creare e modificare tramite file .ini nuovi tipi di soldati ADVENT utilizzando elementi del gioco base. Grazie a quest'opzione, è possibile ricolorare anche alcuni alieni! Il file .ini da modificare è XComLW_AlienVariations.
+Il mod comprende la possibilità di creare e modificare tramite file .ini nuovi tipi di soldati ADVENT utilizzando elementi del gioco base. Grazie a quest'opzione, è possibile ricolorare anche alcuni alieni! Il file .ini da modificare è XComLWOTC_AlienVariations.
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ Installazione manuale al di fuori di Steam:
 
 Rimozione manuale del mod
 
-1) Rimuovi la cartella \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) Rimuovi la cartella \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 Nota: aggiornare questo mod a partire dalla versione v1 (che comprendeva solo il Muton Centurion) e caricare salvataggi riguardanti il Muton Centurion potrebbe provocare bug.
 

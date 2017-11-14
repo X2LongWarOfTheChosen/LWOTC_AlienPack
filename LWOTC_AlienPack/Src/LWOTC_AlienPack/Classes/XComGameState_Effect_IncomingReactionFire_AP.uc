@@ -5,7 +5,7 @@
 //		incoming reaction fire for the purpose of triggering other abilities.
 //---------------------------------------------------------------------------------------
 
-class XComGameState_Effect_IncomingReactionFire_AP extends XComGameState_Effect_EffectCounter_AP config (LW_AlienPack);
+class XComGameState_Effect_IncomingReactionFire_AP extends XComGameState_Effect_EffectCounter_AP config (LWOTC_AlienPack);
 
 var config array<name> LR_REACTION_FIRE_ABILITYNAMES;
 var bool FlyoverTriggered;

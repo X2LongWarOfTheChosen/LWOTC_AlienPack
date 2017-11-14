@@ -14,7 +14,7 @@ Pre-alpha
   * tabs over spaces
   * new lines for braces
   * use braces even for one-line if/else bodies
-  * unix line endings
+  * unix line endings  
 More style rules for LWOTC can be found here:
 https://docs.google.com/document/d/1dYSZQD6YNg9ja7re68KMDb6h26abVj4vW3i0_2hVhuM
 

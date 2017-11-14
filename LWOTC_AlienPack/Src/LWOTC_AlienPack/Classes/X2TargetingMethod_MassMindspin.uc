@@ -4,7 +4,7 @@
 //  PURPOSE: Specialized targeting that doesn't warn about hitting friendly targets
 //---------------------------------------------------------------------------------------
 
-class X2TargetingMethod_MassMindspin extends X2TargetingMethod_Cone config(LW_AlienPack);
+class X2TargetingMethod_MassMindspin extends X2TargetingMethod_Cone config(LWOTC_AlienPack);
 
 function bool VerifyTargetableFromIndividualMethod(delegate<ConfirmAbilityCallback> fnCallback)
 {

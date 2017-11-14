@@ -1,6 +1,6 @@
 ﻿Alien Pack mod for XCOM2
-By Long War Studios
-http://www.longwarstudios.com/
+Port of Pavonis Interactive's Alien Pack for LWOTC
+http://www.pavonisinteractive.com/
 
 This mod adds a series of new alien and ADVENT enemies to the campaign:
 
@@ -18,7 +18,7 @@ This mod adds a series of new alien and ADVENT enemies to the campaign:
 * ADVENT Gunner, a suppression specialist
 * Many of these have upgraded versions that appear later in the campaign, and the mod includes upgraded Vipers and Archons as well, for a total of 29 new enemies for you to face.
 
-The mod also includes an ini-configurable system to build and color new types of ADVENT troopers using base-game parts. Some aliens can also be recolored with this system. The ini file that manages this is XComLW_AlienVariations.
+The mod also includes an ini-configurable system to build and color new types of ADVENT troopers using base-game parts. Some aliens can also be recolored with this system. The ini file that manages this is XComLWOTC_AlienVariations.
 
 ----------------------------------
 
@@ -28,7 +28,7 @@ Non-Steam Workshop manual installations:
 
 Manually Uninstalling the mod
 
-1) Remove the folder \Steam\steamapps\common\XCOM 2\XComGame\Mods\LW_AlienPack\
+1) Remove the folder \Steam\steamapps\common\XCOM 2\XComGame\Mods\LWOTC_AlienPack\
 
 Note: Upgrading from v1 of this mod (which only had the Muton Centurion) and loading tactical saves in which a Muton Centurion is present may cause buggy behavior.
 

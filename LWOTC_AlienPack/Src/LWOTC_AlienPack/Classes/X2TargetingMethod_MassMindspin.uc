@@ -11,9 +11,9 @@ function bool VerifyTargetableFromIndividualMethod(delegate<ConfirmAbilityCallba
 	return true;
 }
 
-function Init(AvailableAction InAction)
+function Init(AvailableAction InAction, int NewTargetIndex)
 {
-	super.Init(InAction);
+	super.Init(InAction, NewTargetIndex);
 
 	//override and use the offensive meshes, because we're forcing Offensive otherwise false to avoid getting false positives against friendly units
 	AOEMeshActor.InstancedMeshComponent.SetStaticMesh(StaticMesh(DynamicLoadObject("UI_3D.Tile.AOETile", class'StaticMesh')));

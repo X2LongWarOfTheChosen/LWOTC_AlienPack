@@ -245,7 +245,7 @@
     <Content Include="Src\LWOTC_AlienPack\Classes\X2Character_AlienPack.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_AlienPack\Classes\X2DownloadableContentInfo_LWAlienPack.uc">
+    <Content Include="Src\LWOTC_AlienPack\Classes\X2DownloadableContentInfo_LWOTCAlienPack.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_AlienPack\Classes\X2Effect_AdventGrenadeLauncher.uc">

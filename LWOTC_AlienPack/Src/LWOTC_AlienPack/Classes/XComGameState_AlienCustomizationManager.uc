@@ -132,7 +132,7 @@ simulated function RegisterListeners()
 }
 
 // loops over alien units and tweaks Customization
-function EventListenerReturn OnUnitBeginPlay(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnUnitBeginPlay(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameStateHistory History;
 	local XComGameState NewGameState;
@@ -217,7 +217,7 @@ function UpdateAllCustomizations()
 
 // DEPRECATED -- Moved to the AlienCustomization with a filter on the unit
 ////assumes that a alienvariation component is already present, if needed
-//function EventListenerReturn OnCinematicPawnCreation(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+//function EventListenerReturn OnCinematicPawnCreation(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 //{
 	//local XComGameState_Unit_AlienCustomization AlienCustomization;
 	//local XComGameState_Unit UnitState;

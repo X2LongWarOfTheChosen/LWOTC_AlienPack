@@ -383,7 +383,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	local X2AbilityTemplate								Template;
 	local X2AbilityCost_Ammo							AmmoCost;
 	local X2AbilityCost_ActionPoints					ActionPointCost;
-	local X2AbilityMultiTarget_SoldierBonusRadius		RadiusMultiTarget;
+	local X2AbilityMultiTarget_Radius		RadiusMultiTarget;
 	local X2Effect_ReserveActionPoints					ReserveActionPointsEffect;
 	local X2Condition_UnitInventory						InventoryCondition, InventoryCondition2;
 	local X2Effect_Suppression							SuppressionEffect;
@@ -441,7 +441,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	PrimaryTarget.bShowAOE = true;
 	Template.AbilityTargetSTyle = PrimaryTarget;
 
-	RadiusMultiTarget = new class'X2AbilityMultiTarget_SoldierBonusRadius';
+	RadiusMultiTarget = new class'X2AbilityMultiTarget_Radius';
 	RadiusMultiTarget.bIgnoreBlockingCover = true;
 	RadiusMultiTarget.bAllowDeadMultiTargetUnits = false;
 	RadiusMultiTarget.bExcludeSelfAsTargetIfWithinRadius = true;
@@ -560,13 +560,13 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 }
 
 //Adds multitarget visualization
-static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGameState, out array<VisualizationTrack> OutVisualizationTracks)
+static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGameState, out array<VisualizationActionMetadata> OutVisualizationTracks)
 {
 	local XComGameStateHistory History;
 	local XComGameStateContext_Ability  Context;
 	local StateObjectReference          InteractingUnitRef;
-	local VisualizationTrack        EmptyTrack;
-	local VisualizationTrack        BuildTrack;
+	local VisualizationActionMetadata        EmptyTrack;
+	local VisualizationActionMetadata        BuildTrack;
 	local XComGameState_Ability         Ability;
 	local X2Action_PlaySoundAndFlyOver SoundAndFlyOver;
 
@@ -580,10 +580,10 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 	BuildTrack = EmptyTrack;
 	BuildTrack.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
 	BuildTrack.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
-	BuildTrack.TrackActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+	BuildTrack.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
 
-	class'X2Action_ExitCover'.static.AddToVisualizationTrack(BuildTrack, Context);
-	class'X2Action_StartSuppression'.static.AddToVisualizationTrack(BuildTrack, Context);
+	class'X2Action_ExitCover'.static.AddToVisualizationTree(BuildTrack, Context);
+	class'X2Action_StartSuppression'.static.AddToVisualizationTree(BuildTrack, Context);
 	OutVisualizationTracks.AddItem(BuildTrack);
 	//****************************************************************************************
 	//Configure the visualization track for the primary target
@@ -593,12 +593,12 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 	BuildTrack = EmptyTrack;
 	BuildTrack.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
 	BuildTrack.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
-	BuildTrack.TrackActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
-	SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTrack(BuildTrack, Context));
+	BuildTrack.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+	SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(BuildTrack, Context));
 	SoundAndFlyOver.SetSoundAndFlyOverParameters(None, Ability.GetMyTemplate().LocFlyOverText, '', eColor_Bad);
 	if (XComGameState_Unit(BuildTrack.StateObject_OldState).ReserveActionPoints.Length != 0 && XComGameState_Unit(BuildTrack.StateObject_NewState).ReserveActionPoints.Length == 0)
 	{
-		SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTrack(BuildTrack, Context));
+		SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(BuildTrack, Context));
 		SoundAndFlyOver.SetSoundAndFlyOverParameters(none, class'XLocalizedData'.default.OverwatchRemovedMsg, '', eColor_Bad);
 	}
 	OutVisualizationTracks.AddItem(BuildTrack);
@@ -612,12 +612,12 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 			BuildTrack = EmptyTrack;
 			BuildTrack.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
 			BuildTrack.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
-			BuildTrack.TrackActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
-			SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTrack(BuildTrack, Context));
+			BuildTrack.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+			SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(BuildTrack, Context));
 			SoundAndFlyOver.SetSoundAndFlyOverParameters(None, Ability.GetMyTemplate().LocFlyOverText, '', eColor_Bad);
 			if (XComGameState_Unit(BuildTrack.StateObject_OldState).ReserveActionPoints.Length != 0 && XComGameState_Unit(BuildTrack.StateObject_NewState).ReserveActionPoints.Length == 0)
 			{
-				SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTrack(BuildTrack, Context));
+				SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(BuildTrack, Context));
 				SoundAndFlyOver.SetSoundAndFlyOverParameters(none, class'XLocalizedData'.default.OverwatchRemovedMsg, '', eColor_Bad);
 			}
 			OutVisualizationTracks.AddItem(BuildTrack);
@@ -625,15 +625,15 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 	}
 }
 
-static function AreaSuppressionBuildVisualizationSync(name EffectName, XComGameState VisualizeGameState, out VisualizationTrack BuildTrack)
+static function AreaSuppressionBuildVisualizationSync(name EffectName, XComGameState VisualizeGameState, out VisualizationActionMetadata BuildTrack)
 {
 	local X2Action_ExitCover ExitCover;
 
 	if (EffectName == class'X2Effect_AreaSuppression_AP'.default.EffectName)
 	{
-		ExitCover = X2Action_ExitCover(class'X2Action_ExitCover'.static.AddToVisualizationTrack( BuildTrack, VisualizeGameState.GetContext() ));
+		ExitCover = X2Action_ExitCover(class'X2Action_ExitCover'.static.AddToVisualizationTree( BuildTrack, VisualizeGameState.GetContext() ));
 		ExitCover.bIsForSuppression = true;
 
-		class'X2Action_StartSuppression'.static.AddToVisualizationTrack( BuildTrack, VisualizeGameState.GetContext() );
+		class'X2Action_StartSuppression'.static.AddToVisualizationTree( BuildTrack, VisualizeGameState.GetContext() );
 	}
 }

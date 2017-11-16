@@ -20,9 +20,9 @@ var Rotator DesiredRotation;
 var float WallHeight;
 var Quat QuatRotation;
 
-function Init(const out VisualizationTrack InTrack)
+function Init()
 {
-	super(X2Action_Move).Init(InTrack);
+	super(X2Action_Move).Init();
 
 	DesiredRotation = Normalize(Rotator(Destination - UnitPawn.Location));
 	DesiredRotation.Pitch = 0;
@@ -33,7 +33,7 @@ function Init(const out VisualizationTrack InTrack)
 
 function ParsePathSetParameters(int InPathIndex, const out vector InDestination, const out vector InSource, float InDistance)
 {
-	PathIndex = InPathIndex;	
+	PathIndex = InPathIndex;
 	Destination = InDestination;
 	Source = InSource;
 	Distance = InDistance;
@@ -70,7 +70,7 @@ Begin:
 	StartingAtom.Translation.Z = Unit.GetDesiredZForLocation(StartingAtom.Translation);
 	UnitPawn.GetAnimTreeController().GetDesiredEndingAtomFromStartingAtom(AnimParams, StartingAtom);
 	FinishAnim(UnitPawn.GetAnimTreeController().PlayFullBodyDynamicAnim(AnimParams));
-	
+
 	// Loop
 	if (WallHeight > 400)
 	{
@@ -79,7 +79,7 @@ Begin:
 		AnimParams.AnimName = m_LoopAnim;
 		FinishAnim(UnitPawn.GetAnimTreeController().PlayFullBodyDynamicAnim(AnimParams));
 	}
-	
+
 	//NewDirection.Z = 0.0f;
 	//if( abs(NewDirection.X) < 0.001f && abs(NewDirection.Y) < 0.001f )
 	//{

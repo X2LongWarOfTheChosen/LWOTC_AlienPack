@@ -294,7 +294,6 @@ static function X2AbilityTemplate AddLightEmUpAbility()
 
 	KnockbackEffect = new class'X2Effect_Knockback';
 	KnockbackEffect.KnockbackDistance = 2;
-	KnockbackEffect.bUseTargetLocation = true;
 	Template.AddTargetEffect(KnockbackEffect);
 
 	Template.OverrideAbilities.AddItem('StandardShot');
@@ -447,8 +446,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	RadiusMultiTarget.bExcludeSelfAsTargetIfWithinRadius = true;
 	RadiusMultiTarget.bUseWeaponRadius = false;
 	RadiusMultiTarget.ftargetradius = default.AREA_SUPPRESSION_RADIUS;
-	RadiusMultiTarget.SoldierAbilityName = 'DangerZone';
-	RadiusMultiTarget.BonusRadius = 2;
+	RadiusMultiTarget.AddAbilityBonusRadius('DangerZone', 2); // LWOTC
 	Template.AbilityMultiTargetStyle = RadiusMultiTarget;
 
 	Template.AbilityMultiTargetConditions.AddItem(default.LivingHostileUnitOnlyProperty);
@@ -560,7 +558,7 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 }
 
 //Adds multitarget visualization
-static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGameState, out array<VisualizationActionMetadata> OutVisualizationTracks)
+static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGameState)
 {
 	local XComGameStateHistory History;
 	local XComGameStateContext_Ability  Context;
@@ -584,7 +582,6 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 
 	class'X2Action_ExitCover'.static.AddToVisualizationTree(BuildTrack, Context);
 	class'X2Action_StartSuppression'.static.AddToVisualizationTree(BuildTrack, Context);
-	OutVisualizationTracks.AddItem(BuildTrack);
 	//****************************************************************************************
 	//Configure the visualization track for the primary target
 
@@ -601,7 +598,6 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 		SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(BuildTrack, Context));
 		SoundAndFlyOver.SetSoundAndFlyOverParameters(none, class'XLocalizedData'.default.OverwatchRemovedMsg, '', eColor_Bad);
 	}
-	OutVisualizationTracks.AddItem(BuildTrack);
 
 	//Configure for the rest of the targets in AOE Suppression
 	if (Context.InputContext.MultiTargets.Length > 0)
@@ -620,7 +616,6 @@ static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGame
 				SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(BuildTrack, Context));
 				SoundAndFlyOver.SetSoundAndFlyOverParameters(none, class'XLocalizedData'.default.OverwatchRemovedMsg, '', eColor_Bad);
 			}
-			OutVisualizationTracks.AddItem(BuildTrack);
 		}
 	}
 }

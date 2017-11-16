@@ -3,7 +3,9 @@
 //  AUTHOR:  Amineri (Long War Studios)
 //  PURPOSE: Implements AoE Damage immunities for Bastion, based on Solace ability
 //---------------------------------------------------------------------------------------
-class X2Effect_AreaSuppression_AP extends X2Effect_Suppression config(LWOTC_PerkPack);
+class X2Effect_AreaSuppression_AP extends X2Effect_Suppression config(LWOTC_AlienPack);
+
+var config int AREA_SUPPRESSION_AMMO_COST;
 
 // prevent doubling up if unit is both suppressed and area suppressed, since regular suppression doesn't stack with itself
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
@@ -156,10 +158,10 @@ static function bool ShouldRemoveAreaSuppression(XComGameState_Unit SourceUnit, 
 		{
 			if (bBeforeAmmoReduction)
 			{
-				if (WeaponState.Ammo <= (2 * class'X2Ability_LW2WotC_ActivatedAbilitySet'.default.AREA_SUPPRESSION_SHOT_AMMO_COST) - 1)
+				if (WeaponState.Ammo <= (2 * default.AREA_SUPPRESSION_AMMO_COST) - 1)
 					bShouldRemove = true;
 			}
-			else if (WeaponState.Ammo < (2 * class'X2Ability_LW2WotC_ActivatedAbilitySet'.default.AREA_SUPPRESSION_SHOT_AMMO_COST) - 1)
+			else if (WeaponState.Ammo < (2 * default.AREA_SUPPRESSION_AMMO_COST) - 1)
 			{
 				bShouldRemove = true;
 			}

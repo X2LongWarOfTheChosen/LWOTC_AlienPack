@@ -90,11 +90,12 @@ Begin:
 	AnimParams = default.AnimParams;
 	AnimParams.PlayRate = GetMoveAnimationSpeed();
 	AnimParams.AnimName = m_StopAnim;
-	AnimParams.HasDesiredEndingAtom = true;
-	AnimParams.DesiredEndingAtom.Translation = Destination;
-	AnimParams.DesiredEndingAtom.Translation.Z = UnitPawn.GetDesiredZForLocation(Destination);
-	AnimParams.DesiredEndingAtom.Rotation = QuatRotation;
-	AnimParams.DesiredEndingAtom.Scale = 1.0f;
+	// AnimParams.HasDesiredEndingAtom = true; // LWOTC
+	AnimParams.DesiredEndingAtoms.Add(1);
+	AnimParams.DesiredEndingAtoms[0].Translation = Destination;
+	AnimParams.DesiredEndingAtoms[0].Translation.Z = UnitPawn.GetDesiredZForLocation(Destination);
+	AnimParams.DesiredEndingAtoms[0].Rotation = QuatRotation;
+	AnimParams.DesiredEndingAtoms[0].Scale = 1.0f;
 	FinishAnim(UnitPawn.GetAnimTreeController().PlayFullBodyDynamicAnim(AnimParams));
 
 	UnitPawn.Acceleration = Vect(0, 0, 0);

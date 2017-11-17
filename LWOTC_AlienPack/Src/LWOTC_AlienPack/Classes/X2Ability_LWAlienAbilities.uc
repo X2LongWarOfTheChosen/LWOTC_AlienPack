@@ -337,7 +337,7 @@ function WarCry_BuildVisualization(XComGameState VisualizeGameState)
 	local XComGameStateHistory				History;
   	local XComGameStateContext_Ability		context;
   	local StateObjectReference				InteractingUnitRef;
-  	local VisualizationActionMetadata				EmptyTrack, ActionMetadata, TargetTrack;
+  	local VisualizationActionMetadata		EmptyActionMetadata, ActionMetadata, TargetTrack;
   	local X2Action_PlayAnimation			PlayAnimationAction;
 	local X2Action_PlaySoundAndFlyOver		SoundAndFlyover, SoundAndFlyoverTarget;
 	local XComGameState_Ability				Ability;
@@ -354,7 +354,7 @@ function WarCry_BuildVisualization(XComGameState VisualizeGameState)
 	//****************************************************************************************
 	//Configure the visualization track for the source
 	//***************************************************************************************
-	ActionMetadata = EmptyTrack;
+	ActionMetadata = EmptyActionMetadata;
     ActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
     ActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
     ActionMetadata.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
@@ -370,7 +370,7 @@ function WarCry_BuildVisualization(XComGameState VisualizeGameState)
 	{
 		if (EffectState.GetX2Effect().EffectName == class'X2Effect_WarCry'.default.EffectName)
 		{
-				TargetTrack = EmptyTrack;
+				TargetTrack = EmptyActionMetadata;
 				UnitState = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(EffectState.ApplyEffectParameters.TargetStateObjectRef.ObjectID));
 				if ((UnitState != none) && (EffectState.StatChanges.Length > 0))
 				{
@@ -620,7 +620,7 @@ static function X2DataTemplate CreateMassMindspinAbility()
 	local X2AbilityCost_ActionPoints				ActionPointCost;
 	local X2AbilityCooldown_LocalAndGlobal			Cooldown;
 	local X2Condition_UnitProperty					UnitPropertyCondition;
-	//local X2Condition_Visibility        TargetVisibilityCondition;
+	//local X2Condition_Visibility        			TargetVisibilityCondition;
 	local X2Condition_UnitImmunities				UnitImmunityCondition;
 	local X2Effect_PersistentStatChange				DisorientedEffect;
 	local X2Effect_Panicked							PanickedEffect;
@@ -830,17 +830,17 @@ static function X2DataTemplate CreateMassReanimateAbility()
 
 simulated function AnimaInversion_BuildVisualization_SC(XComGameState VisualizeGameState)
 {
-	local XComGameStateHistory History;
-	local XComGameStateContext_Ability Context;
-	local StateObjectReference InteractingUnitRef;
-	local VisualizationActionMetadata EmptyTrack;
-	local VisualizationActionMetadata GatekeeperTrack, ActionMetadata, ZombieTrack;
-	local XComGameState_Unit SpawnedUnit, DeadUnit;
-	local UnitValue SpawnedUnitValue;
-	local X2Effect_SpawnPsiZombie SpawnPsiZombieEffect;
-	local int i, j;
-	local name SpawnPsiZombieEffectResult;
-	local X2VisualizerInterface TargetVisualizerInterface;
+	local XComGameStateHistory 				History;
+	local XComGameStateContext_Ability 		Context;
+	local StateObjectReference 				InteractingUnitRef;
+	local VisualizationActionMetadata 		EmptyActionMetadata;
+	local VisualizationActionMetadata 		GatekeeperActionMetadata, ActionMetadata, ZombieActionMetadata;
+	local XComGameState_Unit 				SpawnedUnit, DeadUnit;
+	local UnitValue 						SpawnedUnitValue;
+	local X2Effect_SpawnPsiZombie 			SpawnPsiZombieEffect;
+	local int 								i, j;
+	local name 								SpawnPsiZombieEffectResult;
+	local X2VisualizerInterface 			TargetVisualizerInterface;
 
 	History = `XCOMHISTORY;
 
@@ -849,23 +849,23 @@ simulated function AnimaInversion_BuildVisualization_SC(XComGameState VisualizeG
 
 	//Configure the visualization track for the shooter
 	//****************************************************************************************
-	GatekeeperTrack = EmptyTrack;
-	GatekeeperTrack.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
-	GatekeeperTrack.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
-	GatekeeperTrack.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+	GatekeeperActionMetadata = EmptyActionMetadata;
+	GatekeeperActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
+	GatekeeperActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
+	GatekeeperActionMetadata.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
 
-	class'X2Action_AbilityPerkStart'.static.AddToVisualizationTree(GatekeeperTrack, Context);
-	class'X2Action_ExitCover'.static.AddToVisualizationTree(GatekeeperTrack, Context);
-	class'X2Action_Fire'.static.AddToVisualizationTree(GatekeeperTrack, Context);
-	class'X2Action_EnterCover'.static.AddToVisualizationTree(GatekeeperTrack, Context);
-	class'X2Action_AbilityPerkEnd'.static.AddToVisualizationTree(GatekeeperTrack, Context);
+	class'X2Action_AbilityPerkStart'.static.AddToVisualizationTree(GatekeeperActionMetadata, Context);
+	class'X2Action_ExitCover'.static.AddToVisualizationTree(GatekeeperActionMetadata, Context);
+	class'X2Action_Fire'.static.AddToVisualizationTree(GatekeeperActionMetadata, Context);
+	class'X2Action_EnterCover'.static.AddToVisualizationTree(GatekeeperActionMetadata, Context);
+	class'X2Action_AbilityPerkEnd'.static.AddToVisualizationTree(GatekeeperActionMetadata, Context);
 
 	// Configure the visualization track for the multi targets
 	//******************************************************************************************
 	for( i = 0; i < Context.InputContext.MultiTargets.Length; ++i )
 	{
 		InteractingUnitRef = Context.InputContext.MultiTargets[i];
-		ActionMetadata = EmptyTrack;
+		ActionMetadata = EmptyActionMetadata;
 		ActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
 		ActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
 		ActionMetadata.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
@@ -900,25 +900,25 @@ simulated function AnimaInversion_BuildVisualization_SC(XComGameState VisualizeG
 			`assert(DeadUnit != none);
 			DeadUnit.GetUnitValue(class'X2Effect_SpawnUnit'.default.SpawnedUnitValueName, SpawnedUnitValue);
 
-			ZombieTrack = EmptyTrack;
-			ZombieTrack.StateObject_OldState = History.GetGameStateForObjectID(SpawnedUnitValue.fValue, eReturnType_Reference, VisualizeGameState.HistoryIndex);
-			ZombieTrack.StateObject_NewState = ZombieTrack.StateObject_OldState;
-			SpawnedUnit = XComGameState_Unit(ZombieTrack.StateObject_NewState);
+			ZombieActionMetadata = EmptyActionMetadata;
+			ZombieActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(SpawnedUnitValue.fValue, eReturnType_Reference, VisualizeGameState.HistoryIndex);
+			ZombieActionMetadata.StateObject_NewState = ZombieActionMetadata.StateObject_OldState;
+			SpawnedUnit = XComGameState_Unit(ZombieActionMetadata.StateObject_NewState);
 			`assert(SpawnedUnit != none);
-			ZombieTrack.VisualizeActor = History.GetVisualizer(SpawnedUnit.ObjectID);
+			ZombieActionMetadata.VisualizeActor = History.GetVisualizer(SpawnedUnit.ObjectID);
 
-			SpawnPsiZombieEffect.AddSpawnVisualizationsToTracks(Context, SpawnedUnit, ZombieTrack, DeadUnit, ActionMetadata);
+			SpawnPsiZombieEffect.AddSpawnVisualizationsToTracks(Context, SpawnedUnit, ZombieActionMetadata, DeadUnit, ActionMetadata);
 		}
 	}
 }
 
 static function X2DataTemplate CreatePersonalShieldAbility()
 {
-	local X2AbilityTemplate							Template;
-	local X2AbilityCooldown							Cooldown;
-	local X2AbilityCost_ActionPoints				ActionPointCost;
-	local array<name>								SkipExclusions;
-	local X2Effect_EnergyShield						PersonalShieldEffect;
+	local X2AbilityTemplate				Template;
+	local X2AbilityCooldown				Cooldown;
+	local X2AbilityCost_ActionPoints	ActionPointCost;
+	local array<name>					SkipExclusions;
+	local X2Effect_EnergyShield			PersonalShieldEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'PersonalShield');
 
@@ -968,8 +968,8 @@ static function X2DataTemplate CreatePersonalShieldAbility()
 
 static function X2DataTemplate CreateReadyForAnythingAbility()
 {
-	local X2AbilityTemplate							Template;
-	local X2Effect_ReadyForAnything					ActionPointEffect;
+	local X2AbilityTemplate					Template;
+	local X2Effect_ReadyForAnything			ActionPointEffect;
 	local array<name>                       SkipExclusions;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'ReadyForAnything');
@@ -1035,22 +1035,22 @@ static function X2DataTemplate ReadyForAnythingFlyover()
 
 simulated function ReadyForAnything_BuildVisualization(XComGameState VisualizeGameState)
 {
-	local XComGameStateHistory History;
+	local XComGameStateHistory 			History;
 	local XComGameStateContext_Ability  Context;
-	local VisualizationActionMetadata        EmptyTrack;
-	local VisualizationActionMetadata        ActionMetadata;
-	local X2Action_PlaySoundAndFlyOver SoundAndFlyOver;
+	local VisualizationActionMetadata   EmptyActionMetadata;
+	local VisualizationActionMetadata   ActionMetadata;
+	local X2Action_PlaySoundAndFlyOver  SoundAndFlyOver;
 	local StateObjectReference          InteractingUnitRef;
-	local XComGameState_Ability Ability;
+	local XComGameState_Ability 		Ability;
 
 	History = `XCOMHISTORY;
-  context = XComGameStateContext_Ability(VisualizeGameState.GetContext());
+  	context = XComGameStateContext_Ability(VisualizeGameState.GetContext());
 	InteractingUnitRef = Context.InputContext.SourceObject;
 	Ability = XComGameState_Ability(History.GetGameStateForObjectID(context.InputContext.AbilityRef.ObjectID, 1, VisualizeGameState.HistoryIndex - 1));
-  ActionMetadata = EmptyTrack;
-  ActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
-  ActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
-  ActionMetadata.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
+  	ActionMetadata = EmptyActionMetadata;
+  	ActionMetadata.StateObject_OldState = History.GetGameStateForObjectID(InteractingUnitRef.ObjectID, eReturnType_Reference, VisualizeGameState.HistoryIndex - 1);
+  	ActionMetadata.StateObject_NewState = VisualizeGameState.GetGameStateForObjectID(InteractingUnitRef.ObjectID);
+  	ActionMetadata.VisualizeActor = History.GetVisualizer(InteractingUnitRef.ObjectID);
 
 	SoundAndFlyOver = X2Action_PlaySoundAndFlyOver(class'X2Action_PlaySoundAndFlyOver'.static.AddToVisualizationTree(ActionMetadata, Context));
 	SoundAndFlyOver.SetSoundAndFlyOverParameters(SoundCue'SoundUI.OverWatchCue', Ability.GetMyTemplate().LocFlyOverText, '', eColor_Alien, "img:///UILibrary_PerkIcons.UIPerk_overwatch");
@@ -1058,7 +1058,7 @@ simulated function ReadyForAnything_BuildVisualization(XComGameState VisualizeGa
 
 static function X2AbilityTemplate CreateChryssalidSoldierSlashAbility()
 {
-	local X2AbilityTemplate Template;
+	local X2AbilityTemplate 		Template;
 	local X2Effect_HiveQueenSlash	DamageEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'ChryssalidSoldierSlash');
@@ -1084,7 +1084,7 @@ static function X2AbilityTemplate CreateChryssalidSoldierSlashAbility()
 
 static function X2AbilityTemplate CreateHiveQueenSlashAbility()
 {
-	local X2AbilityTemplate Template;
+	local X2AbilityTemplate 		Template;
 	local X2Effect_HiveQueenSlash	DamageEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'HiveQueenSlash');

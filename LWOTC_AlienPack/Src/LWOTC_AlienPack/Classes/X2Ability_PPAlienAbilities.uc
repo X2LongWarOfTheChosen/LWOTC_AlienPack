@@ -67,7 +67,7 @@ static function X2AbilityTemplate AddCenterMassAbility()
 
 static function X2AbilityTemplate AddHitandRunAbility()
 {
-	local X2AbilityTemplate					Template;
+	local X2AbilityTemplate				Template;
 	local X2Effect_HitandRun_AP			HitandRunEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'HitandRun_AP');
@@ -94,7 +94,7 @@ static function X2AbilityTemplate AddHitandRunAbility()
 static function X2AbilityTemplate AddDamnGoodGroundAbility()
 {
 	local X2AbilityTemplate					Template;
-	local X2Effect_DamnGoodGround_AP			AimandDefModifiers;
+	local X2Effect_DamnGoodGround_AP		AimandDefModifiers;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'DamnGoodGround_AP');
 	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityDamnGoodGround"; //TODO
@@ -190,8 +190,8 @@ static function X2AbilityTemplate AddInfighterAbility()
 
 static function X2AbilityTemplate AddDepthPerceptionAbility()
 {
-	local X2AbilityTemplate						Template;
-	local X2Effect_DepthPerception_AP				AttackBonus;
+	local X2AbilityTemplate					Template;
+	local X2Effect_DepthPerception_AP		AttackBonus;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'DepthPerception_AP');
 	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityDepthPerception"; //TODO
@@ -305,8 +305,8 @@ static function X2AbilityTemplate AddLightEmUpAbility()
 
 static function X2AbilityTemplate AddTraverseFireAbility()
 {
-	local X2AbilityTemplate						Template;
-	local X2Effect_TraverseFire_AP				ActionEffect;
+	local X2AbilityTemplate					Template;
+	local X2Effect_TraverseFire_AP			ActionEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE (Template, 'TraverseFire_AP');
 	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityTraverseFire"; //TODO
@@ -329,8 +329,8 @@ static function X2AbilityTemplate AddTraverseFireAbility()
 
 static function X2AbilityTemplate AddLockedOnAbility()
 {
-	local X2AbilityTemplate                 Template;
-	local X2Effect_LockedOn_AP				LockedOnEffect;
+	local X2AbilityTemplate         Template;
+	local X2Effect_LockedOn_AP		LockedOnEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'LockedOn_AP');
 	Template.IconImage = "img:///UILibrary_LWAlienPack.LW_AbilityLockedOn"; //TODO
@@ -382,7 +382,7 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 	local X2AbilityTemplate								Template;
 	local X2AbilityCost_Ammo							AmmoCost;
 	local X2AbilityCost_ActionPoints					ActionPointCost;
-	local X2AbilityMultiTarget_Radius		RadiusMultiTarget;
+	local X2AbilityMultiTarget_Radius					RadiusMultiTarget;
 	local X2Effect_ReserveActionPoints					ReserveActionPointsEffect;
 	local X2Condition_UnitInventory						InventoryCondition, InventoryCondition2;
 	local X2Effect_Suppression							SuppressionEffect;
@@ -480,14 +480,14 @@ static function X2AbilityTemplate AddAreaSuppressionAbility()
 
 static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 {
-	local X2AbilityTemplate                 Template;
-	local X2AbilityCost_ReserveActionPoints ReserveActionPointCost;
-	local X2AbilityToHitCalc_StandardAim    StandardAim;
-	local X2Condition_Visibility            TargetVisibilityCondition;
-	local X2AbilityTrigger_Event	        Trigger;
-	local X2Condition_UnitEffectsWithAbilitySource TargetEffectCondition;
-	local X2Effect_RemoveEffects            RemoveSuppression;
-	local X2Effect                          ShotEffect;
+	local X2AbilityTemplate                 		Template;
+	local X2AbilityCost_ReserveActionPoints 		ReserveActionPointCost;
+	local X2AbilityToHitCalc_StandardAim    		StandardAim;
+	local X2Condition_Visibility            		TargetVisibilityCondition;
+	local X2AbilityTrigger_Event	        		Trigger;
+	local X2Condition_UnitEffectsWithAbilitySource 	TargetEffectCondition;
+	local X2Effect_RemoveEffects            		RemoveSuppression;
+	local X2Effect                          		ShotEffect;
 
 	`CREATE_X2ABILITY_TEMPLATE(Template, 'AreaSuppressionShot_AP');
 
@@ -560,13 +560,13 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 //Adds multitarget visualization
 static function AreaSuppressionBuildVisualization_LW(XComGameState VisualizeGameState)
 {
-	local XComGameStateHistory History;
+	local XComGameStateHistory 			History;
 	local XComGameStateContext_Ability  Context;
 	local StateObjectReference          InteractingUnitRef;
-	local VisualizationActionMetadata        EmptyTrack;
-	local VisualizationActionMetadata        BuildTrack;
+	local VisualizationActionMetadata   EmptyTrack;
+	local VisualizationActionMetadata   BuildTrack;
 	local XComGameState_Ability         Ability;
-	local X2Action_PlaySoundAndFlyOver SoundAndFlyOver;
+	local X2Action_PlaySoundAndFlyOver  SoundAndFlyOver;
 
 	History = `XCOMHISTORY;
 

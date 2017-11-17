@@ -3,7 +3,7 @@
 //  AUTHOR:  John Lumpkin / Amineri (Long War Studios)
 //  PURPOSE: This is a component extension for Effect GameStates, storing the details from
 //			last shot from the soldier, which can be checked as conditions for perk effects.
-//			Used for HyperReactivePupils, 
+//			Used for HyperReactivePupils,
 //---------------------------------------------------------------------------------------
 
 class XComGameState_Effect_LastShotDetails_AP extends XComGameState_BaseObject config (LWOTC_AlienPack);
@@ -26,10 +26,10 @@ function XComGameState_Effect GetOwningEffect()
 	return XComGameState_Effect(`XCOMHISTORY.GetGameStateForObjectID(OwningObjectId));
 }
 
-simulated function EventListenerReturn RecordShot(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+simulated function EventListenerReturn RecordShot(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
     local XComGameState								NewGameState;
-	local XComGameState_Effect_LastShotDetails_AP		ThisEffect;		
+	local XComGameState_Effect_LastShotDetails_AP		ThisEffect;
 	local XComGameState_Ability						ActivatedAbilityState;
     local XComGameStateContext_Ability				ActivatedAbilityStateContext;
 	local XComGameState_Unit						TargetUnit;
@@ -39,7 +39,7 @@ simulated function EventListenerReturn RecordShot(Object EventData, Object Event
 	{
 		if (default.SHOTFIRED_ABILITYNAMES.Find(ActivatedAbilityState.GetMyTemplateName()) != -1)
 		{
-			ActivatedAbilityStateContext = XComGameStateContext_Ability(GameState.GetContext());	
+			ActivatedAbilityStateContext = XComGameStateContext_Ability(GameState.GetContext());
 			TargetUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(ActivatedAbilityStateContext.InputContext.PrimaryTarget.ObjectID));
 			If (TargetUnit != none)
 			{
@@ -51,10 +51,9 @@ simulated function EventListenerReturn RecordShot(Object EventData, Object Event
 				//`PPTRACE("Record Shot Target:" @ TargetUnit.GetMyTemplateName());
 				ThisEffect.b_LastShotHit = !ActivatedAbilityStateContext.IsResultContextMiss();
 				NewGameState.AddStateObject(ThisEffect);
-				`TACTICALRULES.SubmitGameState(NewGameState);    
+				`TACTICALRULES.SubmitGameState(NewGameState);
 			}
 		}
-	}	
+	}
 	return ELR_NoInterrupt;
 }
-

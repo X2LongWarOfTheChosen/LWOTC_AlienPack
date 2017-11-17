@@ -10,13 +10,13 @@ class XComGameState_Effect_IncomingReactionFire_AP extends XComGameState_Effect_
 var config array<name> LR_REACTION_FIRE_ABILITYNAMES;
 var bool FlyoverTriggered;
 
-function XComGameState.EventListenerReturn IncomingReactionFireCheck(Object EventData, Object EventSource, XComGameState GameState, name EventID)
+function XComGameState.EventListenerReturn IncomingReactionFireCheck(Object EventData, Object EventSource, XComGameState GameState, name EventID, Object CallbackData)
 {
     local XComGameState_Unit			AttackingUnit, DefendingUnit;
     local XComGameState_Ability			ActivatedAbilityState;
     local XComGameStateContext_Ability	AbilityContext;
 
-    AbilityContext = XComGameStateContext_Ability(GameState.GetContext());	
+    AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
 	DefendingUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID));
 	if (DefendingUnit != none)
 	{
@@ -27,16 +27,16 @@ function XComGameState.EventListenerReturn IncomingReactionFireCheck(Object Even
 			{
 				ActivatedAbilityState = XComGameState_Ability(EventData);
 				if (ActivatedAbilityState != none)
-				{		
+				{
 					if (default.LR_REACTION_FIRE_ABILITYNAMES.Find(ActivatedAbilityState.GetMyTemplateName()) != -1)
-					{						
+					{
 						//`LOG ("IRFC HIT, TRIGGERING:" @ string(uses));
 						`XEVENTMGR.TriggerEvent('LightningReflexesLWTriggered_AP', ActivatedAbilityState, DefendingUnit, GameState);
 						`XEVENTMGR.TriggerEvent('LightningReflexesLWTriggered_AP2', ActivatedAbilityState, DefendingUnit, GameState);
 					}
 				}
 			}
-		}	
+		}
 	}
 	return ELR_NoInterrupt;
 }
@@ -48,7 +48,7 @@ function XComGameState_Effect_IncomingReactionFire_AP InitFlyoverComponent()
 	return self;
 }
 
-function XComGameState.EventListenerReturn TriggerLRFlyover(Object EventData, Object EventSource, XComGameState GameState, name EventID)
+function XComGameState.EventListenerReturn TriggerLRFlyover(Object EventData, Object EventSource, XComGameState GameState, name EventID, Object CallbackData)
 {
 	local XComGameState_Unit	DefendingUnit;
 	local XGUnit TargetUnitUnit;
@@ -70,25 +70,25 @@ function XComGameState.EventListenerReturn TriggerLRFlyover(Object EventData, Ob
 				ThisEffect=XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(Class,ObjectID));
 				ThisEffect.FlyoverTriggered = true;
 				NewGameState.AddStateObject(ThisEffect);
-				`TACTICALRULES.SubmitGameState(NewGameState);    	
+				`TACTICALRULES.SubmitGameState(NewGameState);
 			}
 		}
 	}
 	return ELR_NoInterrupt;
 }
 
-simulated function EventListenerReturn ResetFlyover(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+simulated function EventListenerReturn ResetFlyover(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
     local XComGameState								NewGameState;
 	local XComGameState_Effect_IncomingReactionFire_AP ThisEffect;
-	
+
 	if(FlyoverTriggered)
 	{
 		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update: Reset Flyover");
 		ThisEffect=XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(Class,ObjectID));
 		ThisEffect.FlyoverTriggered = false;
 		NewGameState.AddStateObject(ThisEffect);
-		`TACTICALRULES.SubmitGameState(NewGameState);    
+		`TACTICALRULES.SubmitGameState(NewGameState);
 	}
 	return ELR_NoInterrupt;
 }

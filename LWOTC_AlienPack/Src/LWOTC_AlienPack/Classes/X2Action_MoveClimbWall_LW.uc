@@ -20,9 +20,9 @@ var Rotator DesiredRotation;
 var float WallHeight;
 var Quat QuatRotation;
 
-function Init(const out VisualizationTrack InTrack)
+function Init()
 {
-	super(X2Action_Move).Init(InTrack);
+	super(X2Action_Move).Init();
 
 	DesiredRotation = Normalize(Rotator(Destination - UnitPawn.Location));
 	DesiredRotation.Pitch = 0;
@@ -33,7 +33,7 @@ function Init(const out VisualizationTrack InTrack)
 
 function ParsePathSetParameters(int InPathIndex, const out vector InDestination, const out vector InSource, float InDistance)
 {
-	PathIndex = InPathIndex;	
+	PathIndex = InPathIndex;
 	Destination = InDestination;
 	Source = InSource;
 	Distance = InDistance;
@@ -70,7 +70,7 @@ Begin:
 	StartingAtom.Translation.Z = Unit.GetDesiredZForLocation(StartingAtom.Translation);
 	UnitPawn.GetAnimTreeController().GetDesiredEndingAtomFromStartingAtom(AnimParams, StartingAtom);
 	FinishAnim(UnitPawn.GetAnimTreeController().PlayFullBodyDynamicAnim(AnimParams));
-	
+
 	// Loop
 	if (WallHeight > 400)
 	{
@@ -79,7 +79,7 @@ Begin:
 		AnimParams.AnimName = m_LoopAnim;
 		FinishAnim(UnitPawn.GetAnimTreeController().PlayFullBodyDynamicAnim(AnimParams));
 	}
-	
+
 	//NewDirection.Z = 0.0f;
 	//if( abs(NewDirection.X) < 0.001f && abs(NewDirection.Y) < 0.001f )
 	//{
@@ -90,11 +90,12 @@ Begin:
 	AnimParams = default.AnimParams;
 	AnimParams.PlayRate = GetMoveAnimationSpeed();
 	AnimParams.AnimName = m_StopAnim;
-	AnimParams.HasDesiredEndingAtom = true;
-	AnimParams.DesiredEndingAtom.Translation = Destination;
-	AnimParams.DesiredEndingAtom.Translation.Z = UnitPawn.GetDesiredZForLocation(Destination);
-	AnimParams.DesiredEndingAtom.Rotation = QuatRotation;
-	AnimParams.DesiredEndingAtom.Scale = 1.0f;
+	// AnimParams.HasDesiredEndingAtom = true; // LWOTC
+	AnimParams.DesiredEndingAtoms.Add(1);
+	AnimParams.DesiredEndingAtoms[0].Translation = Destination;
+	AnimParams.DesiredEndingAtoms[0].Translation.Z = UnitPawn.GetDesiredZForLocation(Destination);
+	AnimParams.DesiredEndingAtoms[0].Rotation = QuatRotation;
+	AnimParams.DesiredEndingAtoms[0].Scale = 1.0f;
 	FinishAnim(UnitPawn.GetAnimTreeController().PlayFullBodyDynamicAnim(AnimParams));
 
 	UnitPawn.Acceleration = Vect(0, 0, 0);

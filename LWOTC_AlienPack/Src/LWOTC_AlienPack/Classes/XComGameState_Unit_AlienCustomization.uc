@@ -130,7 +130,7 @@ simulated function bool ApplyCustomization(optional XComUnitPawn PawnToUpdate, o
 }
 
 //handles updating cinematic pawn creation
-function EventListenerReturn OnCinematicPawnCreation(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnCinematicPawnCreation(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState_Unit UnitState;
 	local UIPawnMgr PawnMgr;

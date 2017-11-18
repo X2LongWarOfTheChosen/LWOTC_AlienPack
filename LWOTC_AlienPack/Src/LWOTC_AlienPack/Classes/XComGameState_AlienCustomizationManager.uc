@@ -3,7 +3,7 @@
 //  AUTHOR:  Amineri / Long War Studios
 //  PURPOSE: This singleton object manages alien Customization settings
 //---------------------------------------------------------------------------------------
-class XComGameState_AlienCustomizationManager extends XComGameState_BaseObject config(LWOTC_AlienVariations);
+class XComGameState_AlienCustomizationManager extends XComGameState_BaseObject config(LWOTC_AlienPackVariations);
 
 `include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 

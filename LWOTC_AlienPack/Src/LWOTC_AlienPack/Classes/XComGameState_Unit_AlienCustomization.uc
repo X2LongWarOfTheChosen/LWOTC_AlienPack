@@ -208,7 +208,7 @@ function bool GetUnitPawn(out XComUnitPawn OutPawn)
 
 	Visualizer = XGUnit(GetUnit().GetVisualizer());
 	if(Visualizer == none)
-		return false;
+		Visualizer = XGUnit(GetUnit().FindOrCreateVisualizer());
 	OutPawn = Visualizer.GetPawn();
 	if(OutPawn == none)
 		return false;

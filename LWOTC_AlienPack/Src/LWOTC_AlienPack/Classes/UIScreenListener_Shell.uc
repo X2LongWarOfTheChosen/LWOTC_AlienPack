@@ -21,7 +21,7 @@ struct AIJobInfo_Addition
 struct SpawnDistributionList_Addition
 {
 	var name						ListID;
-	var SpawnDistributionListEntry  spawnDistributionEntry;
+	var SpawnDistributionList  SpawnDistributionList;
 };
 
 var config array<AIJobInfo_Addition> JobListingAdditions; // Definition of qualifications for each job for this new character
@@ -45,27 +45,6 @@ event OnInit(UIScreen Screen)
 
     // Apply all AI Jobs, adding new items as needed
     UpdateAIJobs();
-
-	//update all InclusionExclusion Lists
-	UpdateSpawnDistributionLists();
-}
-
-simulated function UpdateSpawnDistributionLists()
-{
-	local XComTacticalMissionManager MissionManager;
-	local int ListIdx;
-	local SpawnDistributionList ListItem;
-	local SpawnDistributionList_Addition Addition;
-
-	MissionManager = `TACTICALMISSIONMGR;
-
-	foreach InclusionExclusionMods(Addition)
-	{
-		ListIdx = MissionManager.SpawnDistributionLists.Find('ListID', Addition.ListID);
-		ListItem = MissionManager.SpawnDistributionLists[ListIdx];
-		ListItem = ListItem; // HAX to prevent warning
-		ListItem.SpawnDistribution.AddItem(Addition.spawnDistributionEntry);
-	}
 }
 
 simulated function UpdateAIJobs()

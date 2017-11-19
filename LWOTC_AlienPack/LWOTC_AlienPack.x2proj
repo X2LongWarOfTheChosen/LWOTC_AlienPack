@@ -17,6 +17,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComEditor.ini" />
+    <Content Include="Config\XComEncounterLists.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComEngine.ini" />
     <Content Include="Config\XComGame.ini">
       <SubType>Content</SubType>

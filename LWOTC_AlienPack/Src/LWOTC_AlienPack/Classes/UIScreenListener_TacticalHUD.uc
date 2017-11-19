@@ -11,8 +11,7 @@ class UIScreenListener_TacticalHUD extends UIScreenListener;
 event OnInit(UIScreen Screen)
 {
 	// not needed since we aren't going to try and install the AlienCustomization manager when loading into tactical mission
-	//class'X2DownloadableContentInfo_LWAlienPack'.static.AddAndRegisterCustomizationManager();
-
+	class'X2DownloadableContentInfo_LWOTCAlienPack'.static.AddAndRegisterCustomizationManager();
 	Screen.Spawn(class'LWUpdateAlienCustomizationAction', Screen);
 }
 

@@ -16,4 +16,3 @@ function int GetDefendingDamageModifier (XComGameState_Effect EffectState, XComG
 	}
 	return DamageMod;
 }
-

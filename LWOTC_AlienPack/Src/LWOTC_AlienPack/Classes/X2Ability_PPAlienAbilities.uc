@@ -542,7 +542,7 @@ static function X2AbilityTemplate AreaSuppressionShot_LW_AP()
 	Template.bSkipExitCoverWhenFiring = true;
 
 	Template.bAllowFreeFireWeaponUpgrade = true;
-//  Put holo target effect first because if the target dies from this shot, it will be too late to notify the effect.
+	//  Put holo target effect first because if the target dies from this shot, it will be too late to notify the effect.
 	ShotEffect = class'X2Ability_GrenadierAbilitySet'.static.HoloTargetEffect();
 	ShotEffect.TargetConditions.AddItem(class'X2Ability_DefaultAbilitySet'.static.OverwatchTargetEffectsCondition());
 	Template.AddTargetEffect(ShotEffect);

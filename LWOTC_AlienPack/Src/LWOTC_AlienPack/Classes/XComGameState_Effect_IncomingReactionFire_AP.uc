@@ -12,83 +12,83 @@ var bool FlyoverTriggered;
 
 function XComGameState.EventListenerReturn IncomingReactionFireCheck(Object EventData, Object EventSource, XComGameState GameState, name EventID, Object CallbackData)
 {
-    local XComGameState_Unit			AttackingUnit, DefendingUnit;
-    local XComGameState_Ability			ActivatedAbilityState;
-    local XComGameStateContext_Ability	AbilityContext;
+  local XComGameState_Unit			AttackingUnit, DefendingUnit;
+  local XComGameState_Ability			ActivatedAbilityState;
+  local XComGameStateContext_Ability	AbilityContext;
 
-    AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
-	DefendingUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID));
-	if (DefendingUnit != none)
-	{
-		if (DefendingUnit.HasSoldierAbility('LightningReflexes_LW_AP'))
-		{
-			AttackingUnit = class'X2TacticalGameRulesetDataStructures'.static.GetAttackingUnitState(GameState);
-			if(AttackingUnit != none && AttackingUnit.IsEnemyUnit(DefendingUnit))
-			{
-				ActivatedAbilityState = XComGameState_Ability(EventData);
-				if (ActivatedAbilityState != none)
-				{
-					if (default.LR_REACTION_FIRE_ABILITYNAMES.Find(ActivatedAbilityState.GetMyTemplateName()) != -1)
-					{
-						//`LOG ("IRFC HIT, TRIGGERING:" @ string(uses));
-						`XEVENTMGR.TriggerEvent('LightningReflexesLWTriggered_AP', ActivatedAbilityState, DefendingUnit, GameState);
-						`XEVENTMGR.TriggerEvent('LightningReflexesLWTriggered_AP2', ActivatedAbilityState, DefendingUnit, GameState);
-					}
-				}
-			}
-		}
-	}
-	return ELR_NoInterrupt;
+  AbilityContext = XComGameStateContext_Ability(GameState.GetContext());
+  DefendingUnit = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(AbilityContext.InputContext.PrimaryTarget.ObjectID));
+  if (DefendingUnit != none)
+  {
+    if (DefendingUnit.HasSoldierAbility('LightningReflexes_LW_AP'))
+    {
+      AttackingUnit = class'X2TacticalGameRulesetDataStructures'.static.GetAttackingUnitState(GameState);
+      if(AttackingUnit != none && AttackingUnit.IsEnemyUnit(DefendingUnit))
+      {
+        ActivatedAbilityState = XComGameState_Ability(EventData);
+        if (ActivatedAbilityState != none)
+        {
+          if (default.LR_REACTION_FIRE_ABILITYNAMES.Find(ActivatedAbilityState.GetMyTemplateName()) != -1)
+          {
+            //`LOG ("IRFC HIT, TRIGGERING:" @ string(uses));
+            `XEVENTMGR.TriggerEvent('LightningReflexesLWTriggered_AP', ActivatedAbilityState, DefendingUnit, GameState);
+            `XEVENTMGR.TriggerEvent('LightningReflexesLWTriggered_AP2', ActivatedAbilityState, DefendingUnit, GameState);
+          }
+        }
+      }
+    }
+  }
+  return ELR_NoInterrupt;
 }
 
 
 function XComGameState_Effect_IncomingReactionFire_AP InitFlyoverComponent()
 {
-	FlyoverTriggered = false;
-	return self;
+  FlyoverTriggered = false;
+  return self;
 }
 
 function XComGameState.EventListenerReturn TriggerLRFlyover(Object EventData, Object EventSource, XComGameState GameState, name EventID, Object CallbackData)
 {
-	local XComGameState_Unit	DefendingUnit;
-	local XGUnit TargetUnitUnit;
-	local XComGameState								NewGameState;
-	local XComGameState_Effect_IncomingReactionFire_AP ThisEffect;
+  local XComGameState_Unit	DefendingUnit;
+  local XGUnit TargetUnitUnit;
+  local XComGameState								NewGameState;
+  local XComGameState_Effect_IncomingReactionFire_AP ThisEffect;
 
-	DefendingUnit = XComGameState_Unit(EventSource);
-	if (DefendingUnit != none)
-	{
-		if (DefendingUnit.HasSoldierAbility('LightningReflexes_LW_AP'))
-		{
-			if (!FlyoverTriggered)
-			{
-				TargetUnitUnit = XGUnit(`XCOMHISTORY.GetVisualizer(DefendingUnit.ObjectID));
-				if (TargetUnitUnit != none)
-					class'UIWorldMessageMgr'.static.DamageDisplay(TargetUnitUnit.GetPawn().GetHeadShotLocation(), TargetUnitUnit.GetVisualizedStateReference(), class'XLocalizedData'.default.LightningReflexesMessage);
+  DefendingUnit = XComGameState_Unit(EventSource);
+  if (DefendingUnit != none)
+  {
+    if (DefendingUnit.HasSoldierAbility('LightningReflexes_LW_AP'))
+    {
+      if (!FlyoverTriggered)
+      {
+        TargetUnitUnit = XGUnit(`XCOMHISTORY.GetVisualizer(DefendingUnit.ObjectID));
+        if (TargetUnitUnit != none)
+        class'UIWorldMessageMgr'.static.DamageDisplay(TargetUnitUnit.GetPawn().GetHeadShotLocation(), TargetUnitUnit.GetVisualizedStateReference(), class'XLocalizedData'.default.LightningReflexesMessage);
 
-				NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update: Toggle LR flyover");
-				ThisEffect=XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(Class,ObjectID));
-				ThisEffect.FlyoverTriggered = true;
-				NewGameState.AddStateObject(ThisEffect);
-				`TACTICALRULES.SubmitGameState(NewGameState);
-			}
-		}
-	}
-	return ELR_NoInterrupt;
+        NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update: Toggle LR flyover");
+        ThisEffect=XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(Class,ObjectID));
+        ThisEffect.FlyoverTriggered = true;
+        NewGameState.AddStateObject(ThisEffect);
+        `TACTICALRULES.SubmitGameState(NewGameState);
+      }
+    }
+  }
+  return ELR_NoInterrupt;
 }
 
 simulated function EventListenerReturn ResetFlyover(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-    local XComGameState								NewGameState;
-	local XComGameState_Effect_IncomingReactionFire_AP ThisEffect;
+  local XComGameState								NewGameState;
+  local XComGameState_Effect_IncomingReactionFire_AP ThisEffect;
 
-	if(FlyoverTriggered)
-	{
-		NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update: Reset Flyover");
-		ThisEffect=XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(Class,ObjectID));
-		ThisEffect.FlyoverTriggered = false;
-		NewGameState.AddStateObject(ThisEffect);
-		`TACTICALRULES.SubmitGameState(NewGameState);
-	}
-	return ELR_NoInterrupt;
+  if(FlyoverTriggered)
+  {
+    NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update: Reset Flyover");
+    ThisEffect=XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(Class,ObjectID));
+    ThisEffect.FlyoverTriggered = false;
+    NewGameState.AddStateObject(ThisEffect);
+    `TACTICALRULES.SubmitGameState(NewGameState);
+  }
+  return ELR_NoInterrupt;
 }

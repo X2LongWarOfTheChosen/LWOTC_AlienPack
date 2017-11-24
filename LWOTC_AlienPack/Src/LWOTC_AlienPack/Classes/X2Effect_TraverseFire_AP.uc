@@ -2,7 +2,7 @@
 //  FILE:    X2Effect_TraverseFire
 //  AUTHOR:  John Lumpkin (Long War Studios)
 //  PURPOSE: Conditionally refunds actions for Traverse Fire
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
 class X2Effect_TraverseFire_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
@@ -33,7 +33,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 		`Redscreen("TF: Failed to find TF Component when registering listener");
 		return;
 	}
-    EventMgr.RegisterForEvent(ListenerObj, 'PlayerTurnBegun', TFEffectState.ResetUses, ELD_OnStateSubmitted);
+	EventMgr.RegisterForEvent(ListenerObj, 'PlayerTurnBegun', TFEffectState.ResetUses, ELD_OnStateSubmitted);
 	EventMgr.RegisterForEvent(EffectObj, 'TraverseFire', NewEffectState.TriggerAbilityFlyover, ELD_OnStateSubmitted, , UnitState);
 }
 
@@ -41,7 +41,7 @@ simulated function OnEffectRemoved(const out EffectAppliedData ApplyEffectParame
 {
 	local XComGameState_BaseObject EffectComponent;
 	local Object EffectComponentObj;
-	
+
 	super.OnEffectRemoved(ApplyEffectParameters, NewGameState, bCleansed, RemovedEffectState);
 
 	EffectComponent = GetTFCounter(RemovedEffectState);
@@ -76,7 +76,7 @@ function bool PostAbilityCostPaid(XComGameState_Effect EffectState, XComGameStat
 		return false;
 	CurrentTFCounter = GetTFCounter(EffectState);
 
-	If (CurrentTFCounter != none)	 
+	If (CurrentTFCounter != none)
 	{
 		if (CurrentTFCounter.uses >= default.TF_USES_PER_TURN)		
 			return false;
@@ -106,7 +106,6 @@ function bool PostAbilityCostPaid(XComGameState_Effect EffectState, XComGameStat
 
 defaultproperties
 {
-    DuplicateResponse=eDupe_Ignore
-    EffectName="TraverseFire"
+	DuplicateResponse=eDupe_Ignore
+	EffectName="TraverseFire"
 }
-

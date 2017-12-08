@@ -26,12 +26,12 @@ To start working on the codebase
     acquired. You can check this by making sure the Content folder has appropriately 400Mb of files
     - Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git`
     - Verify that everything is set up properly by typing git remote -v which should produce output the same as the following but with your GitHub username in place:
-
+```
   origin   https://github.com/YourUsername/habitica.git (fetch)
   origin   https://github.com/YourUsername/habitica.git (push)
   upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git (fetch)
   upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git (push)
-
+```
 # Contributing
 Due to the large number of people working on this project, it is important to
 ensure consistent coding standards. If you don't want your changes to get stuck

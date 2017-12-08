@@ -1,8 +1,8 @@
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 //  FILE:    X2Effect_WarCry.uc
 //  AUTHOR:	 John Lumpkin (Long War Studios)
 //  PURPOSE: Creates WarCry effect, which provides stat boosts to nearby friendly units
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 Class X2Effect_WarCry extends X2Effect_ModifyStats
 	config (LWOTC_AlienPack);
 
@@ -15,14 +15,14 @@ var array<name> CharacterNamesLow;
 var localized string strWarCryFriendlyDesc;
 
 /// <summary>
-/// Implements War Cry ability 
+/// Implements War Cry ability
 /// </summary>
 
 
 simulated function AddPersistentStatChange(ECharStatType StatType, float StatAmount, bool HighStat, optional EStatModOp InModOp=MODOP_Addition)
 {
 	local StatChange NewChange;
- 	NewChange.StatType = StatType;
+	NewChange.StatType = StatType;
 	NewChange.StatAmount = StatAmount;
 	NewChange.ModOp = InModOp;
 	if (HighStat)
@@ -43,11 +43,11 @@ simulated function AddCharacterNameLow(name CharacterName)
 
 simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffectParameters, XComGameState_BaseObject kNewTargetState, XComGameState NewGameState, XComGameState_Effect NewEffectState)
 {
-local XComGameState_Unit	EffectTargetUnit;
-local name					TargetUnitName;
-local bool					ValidTarget;
-local XComGameStateHistory	history;
- 
+	local XComGameState_Unit	EffectTargetUnit;
+	local name					TargetUnitName;
+	local bool					ValidTarget;
+	local XComGameStateHistory	history;
+
 	History = `XCOMHISTORY;
 	EffectTargetUnit = XComGameState_Unit(History.GetGameStateForObjectID(ApplyEffectParameters.TargetStateObjectRef.ObjectID));
 
@@ -64,7 +64,7 @@ local XComGameStateHistory	history;
 			ValidTarget = true;
 		}
 		else
-		{ 
+		{
 			if (CharacterNamesLow.Find(TargetUnitName) != -1)
 			{
 				NewEffectState.StatChanges = m_aStatChangesLow;
@@ -80,11 +80,10 @@ local XComGameStateHistory	history;
 
 function bool IsEffectCurrentlyRelevant(XComGameState_Effect EffectGameState, XComGameState_Unit TargetUnit)
 {
-    return EffectGameState.StatChanges.Length > 0;
+	return EffectGameState.StatChanges.Length > 0;
 }
 
 defaultproperties
 {
-    EffectName=WarCry
+	EffectName=WarCry
 }
-

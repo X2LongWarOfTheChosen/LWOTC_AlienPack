@@ -1,8 +1,8 @@
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 //  FILE:    X2Item_LWAlienweapons.uc
 //  AUTHOR:	 Amineri / John Lumpkin (Long War Studios)
 //  PURPOSE: Defines news weapon for ADVENT/alien forces
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 class X2Item_LWAlienWeapons extends X2Item config(GameData_WeaponData);
 
 var config WeaponDamageValue MutonM2_LW_GRENADE_BASEDAMAGE;
@@ -99,14 +99,14 @@ var config int LWDRONE_IDEALRANGE;
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
-	
+
 	Templates.AddItem(CreateMutonM2_LWGrenade());
 	Templates.AddItem(CreateTemplate_MutonM2_LW_WPN());
 	Templates.AddItem(CreateTemplate_MutonM2_LW_MeleeAttack());
 
 	Templates.AddItem(CreateMutonM3_LWGrenade());
 	Templates.AddItem(CreateTemplate_MutonM3_LW_WPN());
-	
+
 	Templates.AddItem(CreateTemplate_Naja_WPN('NajaM1_WPN'));
 	Templates.AddItem(CreateTemplate_Naja_WPN('NajaM2_WPN'));
 	Templates.AddItem(CreateTemplate_Naja_WPN('NajaM3_WPN'));
@@ -121,7 +121,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM1_WPN'));
 	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM2_WPN'));
 	Templates.AddItem(CreateTemplate_AdvGunner_WPN('AdvGunnerM3_WPN'));
-	
+
 	Templates.AddItem(CreateTemplate_AdvSentry_WPN('AdvSentryM1_WPN'));
 	Templates.AddItem(CreateTemplate_AdvSentry_WPN('AdvSentryM2_WPN'));
 	Templates.AddItem(CreateTemplate_AdvSentry_WPN('AdvSentryM3_WPN'));
@@ -142,7 +142,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	Templates.AddItem(CreateTemplate_LWDrone_WPN('LWDroneM1_WPN'));
 	Templates.AddItem(CreateTemplate_LWDrone_WPN('LWDroneM2_WPN'));
-	
+
 	Templates.AddItem(CreateTemplate_LWDroneRepair_WPN('LWDroneRepairM1_WPN'));
 	Templates.AddItem(CreateTemplate_LWDroneRepair_WPN('LWDroneRepairM2_WPN'));
 
@@ -155,7 +155,7 @@ static function X2DataTemplate CreateTemplate_MutonM2_LW_WPN()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MutonM2_LW_WPN');
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
@@ -171,7 +171,7 @@ static function X2DataTemplate CreateTemplate_MutonM2_LW_WPN()
 	Template.iIdealRange = default.MutonM2_LW_IDEALRANGE;
 
 	Template.DamageTypeTemplateName = 'Heavy';
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
@@ -180,7 +180,7 @@ static function X2DataTemplate CreateTemplate_MutonM2_LW_WPN()
 	Template.Abilities.AddItem('Suppression');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Execute');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_Muton_Rifle.WP_MutonRifle";  // re-use base-game Muton Rifle art assets
 
@@ -197,7 +197,7 @@ static function X2DataTemplate CreateTemplate_MutonM2_LW_MeleeAttack()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MutonM2_LW_MeleeAttack');
-	
+
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'baton';
 	Template.WeaponTech = 'magnetic';
@@ -250,7 +250,7 @@ static function X2DataTemplate CreateMutonM2_LWGrenade()
 	Template.iClipSize = 1;
 	Template.iSoundRange = class'X2Item_DefaultGrenades'.default.GRENADE_SOUND_RANGE;
 	Template.DamageTypeTemplateName = 'Explosion';
-	
+
 	Template.Abilities.AddItem('ThrowGrenade');
 	Template.Abilities.AddItem('GrenadeFuse');
 
@@ -258,7 +258,7 @@ static function X2DataTemplate CreateMutonM2_LWGrenade()
 	WeaponDamageEffect.bExplosiveDamage = true;
 	Template.ThrownGrenadeEffects.AddItem(WeaponDamageEffect);
 	Template.LaunchedGrenadeEffects.AddItem(WeaponDamageEffect);
-	
+
 	Template.GameArchetype = "WP_Grenade_Alien.WP_Grenade_Alien";
 
 	Template.iPhysicsImpulse = 10;
@@ -276,7 +276,7 @@ static function X2DataTemplate CreateTemplate_MutonM3_LW_WPN()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MutonM3_LW_WPN');
-	
+
 	Template.WeaponPanelImage = "_BeamCannon";
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
@@ -292,7 +292,7 @@ static function X2DataTemplate CreateTemplate_MutonM3_LW_WPN()
 	Template.iIdealRange = default.MutonM3_LW_IDEALRANGE;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
@@ -304,14 +304,14 @@ static function X2DataTemplate CreateTemplate_MutonM3_LW_WPN()
 
 	Template.Abilities.AddItem('LightEmUp_AP'); // TODO: re-enable this once AI to make it work is added
 
- 	// This all the resources; sounds, animations, models, physics, the works.
+	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWMutonM3Rifle.Archetypes.WP_MutonM3Rifle_Base";  // upscaled, recolored beam cannon
 
 	Template.AddDefaultAttachment('Mag', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Mag",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_MagA");
-    Template.AddDefaultAttachment('Core', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Core",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_CoreA");
-    Template.AddDefaultAttachment('Core_Center', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Core_Center");
-    Template.AddDefaultAttachment('HeatSink', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_HeatSink",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_HeatsinkA");
-    Template.AddDefaultAttachment('Suppressor', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Suppressor",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_SupressorA");
+	Template.AddDefaultAttachment('Core', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Core",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_CoreA");
+	Template.AddDefaultAttachment('Core_Center', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Core_Center");
+	Template.AddDefaultAttachment('HeatSink', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_HeatSink",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_HeatsinkA");
+	Template.AddDefaultAttachment('Suppressor', "LWMutonM3Rifle.Meshes.SK_MutonM3Rifle_Suppressor",, "img:///UILibrary_Common.UI_BeamCannon.BeamCannon_SupressorA");
 
 	Template.iPhysicsImpulse = 5;
 
@@ -337,7 +337,7 @@ static function X2DataTemplate CreateMutonM3_LWGrenade()
 	Template.iClipSize = 1;
 	Template.iSoundRange = class'X2Item_DefaultGrenades'.default.GRENADE_SOUND_RANGE;
 	Template.DamageTypeTemplateName = 'Explosion';
-	
+
 	Template.Abilities.AddItem('ThrowGrenade');
 	Template.Abilities.AddItem('GrenadeFuse');
 
@@ -345,7 +345,7 @@ static function X2DataTemplate CreateMutonM3_LWGrenade()
 	WeaponDamageEffect.bExplosiveDamage = true;
 	Template.ThrownGrenadeEffects.AddItem(WeaponDamageEffect);
 	Template.LaunchedGrenadeEffects.AddItem(WeaponDamageEffect);
-	
+
 	Template.GameArchetype = "WP_Grenade_Alien.WP_Grenade_Alien";
 
 	Template.iPhysicsImpulse = 10;
@@ -362,8 +362,8 @@ static function X2DataTemplate CreateTemplate_Naja_WPN(name TemplateName)
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
-	
-	Template.WeaponPanelImage = "_ConventionalRifle";                  
+
+	Template.WeaponPanelImage = "_ConventionalRifle";
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'beam';
@@ -385,7 +385,7 @@ static function X2DataTemplate CreateTemplate_Naja_WPN(name TemplateName)
 	Template.iIdealRange = default.NAJA_IDEALRANGE;
 
 	Template.DamageTypeTemplateName = 'Heavy';
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	//Template.Abilities.AddItem('StandardShot');  // updated to sniper for move-or-fire
 	Template.Abilities.AddItem('SniperStandardFire');
@@ -431,7 +431,7 @@ static function X2DataTemplate CreateTemplate_Sidewinder_WPN(name TemplateName)
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
@@ -454,7 +454,7 @@ static function X2DataTemplate CreateTemplate_Sidewinder_WPN(name TemplateName)
 	Template.iIdealRange = default.SIDEWINDER_IDEALRANGE;
 
 	Template.DamageTypeTemplateName = 'Heavy';
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
@@ -467,16 +467,16 @@ static function X2DataTemplate CreateTemplate_Sidewinder_WPN(name TemplateName)
 		//future use
 	}
 	if (TemplateName == 'SidewinderM2_WPN' || TemplateName == 'SidewinderM3_WPN')
-	{	
+	{
 		Template.Abilities.AddItem('HitandRun_AP');
 	}
 	if (TemplateName == 'SidewinderM3_WPN')
 	{
 		Template.Abilities.AddItem('HuntersInstinct');
 	}
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "LWSidewinderSMG.Archetypes.WP_Sidewinder_SMG";  
+	Template.GameArchetype = "LWSidewinderSMG.Archetypes.WP_Sidewinder_SMG";
 
 	//Template.AddDefaultAttachment('Optic', "BeamSniper.Meshes.SM_BeamSniper_OpticA", , "img:///UILibrary_Common.UI_BeamSniper.BeamSniper_OpticA");
 	Template.AddDefaultAttachment('Mag', "LWSidewinderSMG.Meshes.SM_BeamAssaultRifle_MagB");
@@ -498,7 +498,7 @@ static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
@@ -521,7 +521,7 @@ static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
 	Template.iIdealRange = default.ADVGUNNER_IDEALRANGE;
 
 	Template.DamageTypeTemplateName = 'Heavy';
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
@@ -538,7 +538,7 @@ static function X2DataTemplate CreateTemplate_AdvGunner_WPN(name TemplateName)
 	{
 		Template.Abilities.AddItem('TraverseFire_AP');
 	}
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWAdvGunner.Archetypes.WP_Cannon_MG";  // TODO: refine model as needed
 
@@ -569,9 +569,9 @@ static function X2DataTemplate CreateTemplate_AdvSentry_WPN(name TemplateName)
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
 
 	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
-    Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ICLIPSIZE; 
+	Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ICLIPSIZE;
 
-    Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
 	if (TemplateName == 'AdvSentryM1_WPN')
 		Template.BaseDamage = class'X2Item_DefaultWeapons'.default.AdvCaptainM1_WPN_BASEDAMAGE;
 	if (TemplateName == 'AdvSentryM2_WPN')
@@ -579,8 +579,8 @@ static function X2DataTemplate CreateTemplate_AdvSentry_WPN(name TemplateName)
 	if (TemplateName == 'AdvSentryM3_WPN')
 		Template.BaseDamage = class'X2Item_DefaultWeapons'.default.AdvCaptainM3_WPN_BASEDAMAGE;
 
-    Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
-    Template.iIdealRange = default.ADVSENTRY_IDEALRANGE; //check this
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.iIdealRange = default.ADVSENTRY_IDEALRANGE; //check this
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -664,7 +664,7 @@ static function X2DataTemplate CreateTemplate_AdvGrenadier_Flashbang()
 	Template.AddAbilityIconOverride('LaunchGrenade', "img:///UILibrary_PerkIcons.UIPerk_grenade_flash");
 	Template.iRange = default.ADVGRENADIER_FLASHBANGGRENADE_RANGE;
 	Template.iRadius = default.ADVGRENADIER_FLASHBANGGRENADE_RADIUS;
-	
+
 	Template.bFriendlyFire = false;
 	Template.bFriendlyFireWarning = false;
 	Template.Abilities.AddItem('ThrowGrenade');
@@ -677,7 +677,7 @@ static function X2DataTemplate CreateTemplate_AdvGrenadier_Flashbang()
 	Template.ThrownGrenadeEffects.AddItem(WeaponDamageEffect);
 
 	Template.LaunchedGrenadeEffects = Template.ThrownGrenadeEffects;
-	
+
 	Template.GameArchetype = "WP_Grenade_Flashbang.WP_Grenade_Flashbang";
 
 	Template.iEnvironmentDamage = default.ADVGRENADIER_FLASHBANGGRENADE_IENVIRONMENTDAMAGE;
@@ -715,7 +715,7 @@ static function X2DataTemplate CreateTemplate_AdvGrenadier_FireGrenade()
 	Template.ThrownGrenadeEffects.AddItem(new class'X2Effect_ApplyFireToWorld');
 	Template.ThrownGrenadeEffects.AddItem(class'X2StatusEffects'.static.CreateBurningStatusEffect(2, 1));
 	Template.LaunchedGrenadeEffects = Template.ThrownGrenadeEffects;
-	
+
 	Template.GameArchetype = "WP_Grenade_Fire.WP_Grenade_Fire";
 
 	Template.iPhysicsImpulse = 10;
@@ -743,11 +743,11 @@ static function X2DataTemplate CreateTemplate_AdvGrenadier_AcidGrenade()
 	Template.iEnvironmentDamage = default.ADVGRENADIER_ACIDGRENADE_IENVIRONMENTDAMAGE;
 	Template.iClipSize = default.ADVGRENADIER_ACIDGRENADE_ICLIPSIZE;
 	Template.Tier = 1;
-	
+
 	Template.Abilities.AddItem('ThrowGrenade');
 	Template.Abilities.AddItem('GrenadeFuse');
-	
-	WeaponEffect = new class'X2Effect_ApplyAcidToWorld';	
+
+	WeaponEffect = new class'X2Effect_ApplyAcidToWorld';
 	Template.ThrownGrenadeEffects.AddItem(WeaponEffect);
 	Template.ThrownGrenadeEffects.AddItem(class'X2StatusEffects'.static.CreateAcidBurningStatusEffect(2,1));
 	// immediate damage
@@ -756,7 +756,7 @@ static function X2DataTemplate CreateTemplate_AdvGrenadier_AcidGrenade()
 	Template.ThrownGrenadeEffects.AddItem(WeaponDamageEffect);
 
 	Template.LaunchedGrenadeEffects = Template.ThrownGrenadeEffects;
-	
+
 	Template.GameArchetype = "WP_Grenade_Acid.WP_Grenade_Acid";
 
 	return Template;
@@ -777,7 +777,7 @@ static function X2DataTemplate CreateTemplate_AdvRocketeerM1_RocketLauncher()
 	Template.iClipSize = default.ADVROCKETEERM1_ROCKETEERLAUNCHER_CLIPSIZE;
 	Template.iRange = default.ADVROCKETEERM1_ROCKETEERLAUNCHER_RANGE;
 	Template.iRadius = default.ADVROCKETEERM1_ROCKETEERLAUNCHER_RADIUS;
-	
+
 	Template.InventorySlot = eInvSlot_HeavyWeapon;
 	Template.StowedLocation = eSlot_HeavyWeapon;
 	Template.GameArchetype = "WP_Heavy_RocketLauncher.WP_Heavy_RocketLauncher";
@@ -789,7 +789,7 @@ static function X2DataTemplate CreateTemplate_AdvRocketeerM1_RocketLauncher()
 	Template.Abilities.AddItem('RocketFuse');
 
 	Template.CanBeBuilt = false;
-		
+
 	return Template;
 }
 
@@ -818,7 +818,7 @@ static function X2DataTemplate CreateHeavyPoweredArmor()
 
 	//Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_ItemGrantedAbilitySet'.default.HEAVY_POWERED_HEALTH_BONUS, true);
 	//Template.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, eStat_ArmorMitigation, class'X2Ability_ItemGrantedAbilitySet'.default.HEAVY_POWERED_MITIGATION_AMOUNT);
-	
+
 	return Template;
 }
 
@@ -829,7 +829,7 @@ static function X2DataTemplate CreateTemplate_AdvMECArcher_WPN()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AdvMECArcher_WPN');
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
@@ -843,7 +843,7 @@ static function X2DataTemplate CreateTemplate_AdvMECArcher_WPN()
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.AdvMECArcher_Wpn_EnvironmentDamage;
 	Template.iIdealRange = default.ADVMECArcher_IDEALRANGE;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
@@ -851,7 +851,7 @@ static function X2DataTemplate CreateTemplate_AdvMECArcher_WPN()
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
 	Template.Abilities.AddItem('Suppression');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "WP_AdvMec_Gun.WP_AdvMecGun"; // TODO : update with retextured weapon?
 
@@ -870,7 +870,7 @@ static function X2DataTemplate CreateTemplate_AdvMECArcher_Shoulder_WPN()
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AdvMECArcher_Shoulder_WPN');
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'shoulder_launcher';
@@ -884,13 +884,13 @@ static function X2DataTemplate CreateTemplate_AdvMECArcher_Shoulder_WPN()
 	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.AdvMECArcher_MicroMissiles_EnvironmentDamage;
 	Template.iIdealRange = default.ADVMECArcher_IDEALRANGE;
-	
+
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.Abilities.AddItem('MicroMissiles');
 	Template.Abilities.AddItem('MicroMissileFuse');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "LWAdvMecArcher.Archetypes.WP_AdvMecBigLauncher"; 
+	Template.GameArchetype = "LWAdvMecArcher.Archetypes.WP_AdvMecBigLauncher";
 
 	Template.iPhysicsImpulse = 5;
 
@@ -915,7 +915,7 @@ static function X2DataTemplate CreateTemplate_LWDrone_WPN(name TemplateName)
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
@@ -935,7 +935,7 @@ static function X2DataTemplate CreateTemplate_LWDrone_WPN(name TemplateName)
 
 	Template.iClipSize = 99;
 	Template.InfiniteAmmo = true;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('LWDroneShock');
 
@@ -955,7 +955,7 @@ static function X2DataTemplate CreateTemplate_LWDroneRepair_WPN(name TemplateNam
 	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
-	
+
 	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
@@ -975,7 +975,7 @@ static function X2DataTemplate CreateTemplate_LWDroneRepair_WPN(name TemplateNam
 
 	Template.iClipSize = 99;
 	Template.InfiniteAmmo = true;
-	
+
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.Abilities.AddItem('LWDroneRepair');
 
@@ -992,36 +992,36 @@ static function X2DataTemplate CreateTemplate_LWDroneRepair_WPN(name TemplateNam
 
 static function X2DataTemplate CreateTemplate_ViperMX_WPN(name TemplateName)
 {
-    local X2WeaponTemplate Template;
+	local X2WeaponTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
-    Template.WeaponPanelImage = "_ConventionalRifle";
-    Template.ItemCat = 'Weapon';
-    Template.WeaponCat = 'rifle';
-    Template.WeaponTech = 'beam';
-    Template.strImage = "img:///UILibrary_Common.AlienWeapons.ViperRifle";
+	Template.WeaponPanelImage = "_ConventionalRifle";
+	Template.ItemCat = 'Weapon';
+	Template.WeaponCat = 'rifle';
+	Template.WeaponTech = 'beam';
+	Template.strImage = "img:///UILibrary_Common.AlienWeapons.ViperRifle";
 	Template.RemoveTemplateAvailablility(Template.BITFIELD_GAMEAREA_Multiplayer); //invalidates multiplayer availability
-    Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
-	
+	Template.RangeAccuracy = class'X2Item_DefaultWeapons'.default.FLAT_CONVENTIONAL_RANGE;
+
 	if (TemplateName == 'ViperM2_LW_WPN')
 		Template.BaseDamage = default.VIPERM2_WPN_BASEDAMAGE;
 	if (TemplateName == 'ViperM3_LW_WPN')
 		Template.BaseDamage = default.VIPERM3_WPN_BASEDAMAGE;
 
 	Template.iClipSize = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ICLIPSIZE;
-    Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
-    Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
-    Template.iIdealRange = class'X2Item_DefaultWeapons'.default.VIPER_IDEALRANGE;
-    Template.DamageTypeTemplateName = 'Heavy';
+	Template.iSoundRange = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_ISOUNDRANGE;
+	Template.iEnvironmentDamage = class'X2Item_DefaultWeapons'.default.ASSAULTRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
+	Template.iIdealRange = class'X2Item_DefaultWeapons'.default.VIPER_IDEALRANGE;
+	Template.DamageTypeTemplateName = 'Heavy';
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-    Template.Abilities.AddItem('StandardShot');
-    Template.Abilities.AddItem('overwatch');
-    Template.Abilities.AddItem('OverwatchShot');
-    Template.Abilities.AddItem('Reload');
-    Template.Abilities.AddItem('HotLoadAmmo');
-    Template.GameArchetype = "WP_Viper_Rifle.WP_ViperRifle";
-    Template.iPhysicsImpulse = 5;
-    Template.CanBeBuilt = false;
-    Template.TradingPostValue = 30;
-    return Template;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.GameArchetype = "WP_Viper_Rifle.WP_ViperRifle";
+	Template.iPhysicsImpulse = 5;
+	Template.CanBeBuilt = false;
+	Template.TradingPostValue = 30;
+	return Template;
 }

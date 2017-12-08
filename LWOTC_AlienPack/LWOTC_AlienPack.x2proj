@@ -186,7 +186,9 @@
     <Content Include="Localization\XComGame.int">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModPreview.jpg" />
+    <Content Include="ModPreview.jpg">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ReadMe.txt" />
     <Content Include="ReadMe_DE.txt">
       <SubType>Content</SubType>

@@ -2,7 +2,7 @@
 //  FILE:    X2Effect_HitAndRun
 //  AUTHOR:  John Lumpkin (Long War Studios)
 //  PURPOSE: Hit and Run effect to grant free action
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
 class X2Effect_HitandRun_AP extends X2Effect_Persistent config (LWOTC_AlienPack);
 
@@ -50,14 +50,14 @@ function bool PostAbilityCostPaid(XComGameState_Effect EffectState, XComGameStat
 			if(X2TacticalGameRuleset(XComGameInfo(class'Engine'.static.GetCurrentWorldInfo().Game).GameRuleset).VisibilityMgr.GetVisibilityInfo(SourceUnit.ObjectID, TargetUnit.ObjectID, VisInfo))
 			{
 				if (TargetUnit.IsEnemyUnit(SourceUnit) && SourceUnit.CanFlank() && TargetUnit.CanTakeCover() && VisInfo.TargetCover == CT_None)
-				{				
+				{
 					if (default.HNR_ABILITYNAMES.Find(kAbility.GetMyTemplateName()) != -1)
-					{	
-						if (SourceUnit.NumActionPoints() < 2 && PreCostActionPoints.Length > 0) 
+					{
+						if (SourceUnit.NumActionPoints() < 2 && PreCostActionPoints.Length > 0)
 						{
 							AbilityState = XComGameState_Ability(History.GetGameStateForObjectID(EffectState.ApplyEffectParameters.AbilityStateObjectRef.ObjectID));
 							if (AbilityState != none)
-							{				
+							{
 								SourceUnit.ActionPoints.AddItem(class'X2CharacterTemplateManager'.default.MoveActionPoint);
 								EventMgr = `XEVENTMGR;
 								EventMgr.TriggerEvent('HitandRun', AbilityState, SourceUnit, NewGameState);
@@ -71,4 +71,3 @@ function bool PostAbilityCostPaid(XComGameState_Effect EffectState, XComGameStat
 	}
 	return false;
 }
-

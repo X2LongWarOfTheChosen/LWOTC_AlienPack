@@ -32,6 +32,9 @@ static event InstallNewCampaign(XComGameState StartState)
 
 	AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager(StartState);
 	AlienCustomizationManager.RegisterListeners();
+
+	`REDSCREEN("ALIEN PACK VERSION 0.2");
+	`APDEBUG("ALIEN PACK VERSION 0.2");
 }
 
 /// <summary>

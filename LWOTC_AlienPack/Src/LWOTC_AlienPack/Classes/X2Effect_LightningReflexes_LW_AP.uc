@@ -12,7 +12,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 
 	EventMgr = `XEVENTMGR;
 	UnitState = XComGameState_Unit(`XCOMHISTORY.GetGameStateForObjectID(NewEffectState.ApplyEffectParameters.SourceStateObjectRef.ObjectID));
-	
+
 	if (GetLightningReflexesEffectState(NewEffectState) == none)
 	{
 		LightningReflexesEffectState = XComGameState_Effect_IncomingReactionFire_AP(NewGameState.CreateStateObject(class'XComGameState_Effect_IncomingReactionFire_AP'));
@@ -28,7 +28,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 		return;
 	}
 
-    EventMgr.RegisterForEvent(ListenerObj, 'PlayerTurnBegun', LightningReflexesEffectState.ResetUses, ELD_OnStateSubmitted);
+	EventMgr.RegisterForEvent(ListenerObj, 'PlayerTurnBegun', LightningReflexesEffectState.ResetUses, ELD_OnStateSubmitted);
 	EventMgr.RegisterForEvent(ListenerObj, 'UnitMoveFinished', LightningReflexesEffectState.ResetFlyover, ELD_OnStateSubmitted, , UnitState);
 	EventMgr.RegisterForEvent(ListenerObj, 'AbilityActivated', LightningReflexesEffectState.IncomingReactionFireCheck, ELD_OnStateSubmitted);
 	EventMgr.RegisterForEvent(ListenerObj, 'LightningReflexesLWTriggered_AP', LightningReflexesEffectState.IncrementUses, ELD_OnStateSubmitted,, UnitState);
@@ -39,7 +39,7 @@ simulated function OnEffectRemoved(const out EffectAppliedData ApplyEffectParame
 {
 	local XComGameState_BaseObject EffectComponent;
 	local Object EffectComponentObj;
-	
+
 	super.OnEffectRemoved(ApplyEffectParameters, NewGameState, bCleansed, RemovedEffectState);
 
 	EffectComponent = GetLightningReflexesEffectState(RemovedEffectState);
@@ -61,7 +61,7 @@ static function XComGameState_Effect_IncomingReactionFire_AP GetLightningReflexe
 
 function GetToHitAsTargetModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
-    local ShotModifierInfo ShotInfo;
+	local ShotModifierInfo ShotInfo;
 
 	//`LOG ("LRLW firing 1");
 	if (X2AbilityToHitCalc_StandardAim(AbilityState.GetMyTemplate().AbilityToHitCalc) != none)

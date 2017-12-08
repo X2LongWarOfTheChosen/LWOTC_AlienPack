@@ -28,10 +28,10 @@ function XComGameState_Effect GetOwningEffect()
 
 simulated function EventListenerReturn RecordShot(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-    local XComGameState								NewGameState;
+	local XComGameState								NewGameState;
 	local XComGameState_Effect_LastShotDetails_AP		ThisEffect;
 	local XComGameState_Ability						ActivatedAbilityState;
-    local XComGameStateContext_Ability				ActivatedAbilityStateContext;
+	local XComGameStateContext_Ability				ActivatedAbilityStateContext;
 	local XComGameState_Unit						TargetUnit;
 
 	ActivatedAbilityState = XComGameState_Ability(EventData);

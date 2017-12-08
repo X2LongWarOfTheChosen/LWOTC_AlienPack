@@ -23,7 +23,7 @@ function XComGameState_Effect GetOwningEffect()
 
 simulated function EventListenerReturn ResetUses(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-    local XComGameState								NewGameState;
+	local XComGameState								NewGameState;
 	local XComGameState_Effect_EffectCounter_AP		ThisEffect;
 
 	if(uses != 0)
@@ -39,7 +39,7 @@ simulated function EventListenerReturn ResetUses(Object EventData, Object EventS
 
 simulated function EventListenerReturn IncrementUses(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
-    local XComGameState								NewGameState;
+	local XComGameState								NewGameState;
 	local XComGameState_Effect_EffectCounter_AP		ThisEffect;
 
 	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Update: Increment Effect Counter");

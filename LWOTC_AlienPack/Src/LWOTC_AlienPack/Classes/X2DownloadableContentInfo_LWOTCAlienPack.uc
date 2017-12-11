@@ -19,6 +19,10 @@ static event OnLoadedSavedGame()
 
 	AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager();
 	AlienCustomizationManager.RegisterListeners();
+
+
+		`REDSCREEN("ALIEN PACK VERSION 0.2");
+		`APDEBUG("ALIEN PACK VERSION 0.2");
 }
 
 /// <summary>

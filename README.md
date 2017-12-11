@@ -8,7 +8,7 @@ The alien pack is a port of the
 alien pack. The new version is available here  
 https://steamcommunity.com/sharedfiles/filedetails/?id=1205965752
 # What version are we at?
-The release version of X2LongWarOfTheChosen/AlienPack is v0.1-alpha
+The release version of X2LongWarOfTheChosen/AlienPack is v0.1-alpha  
 The working version of X2LongWarOfTheChosen/AlienPack is v0.2-alpha
 
 # The Job List
@@ -20,15 +20,15 @@ provided here https://www.reddit.com/r/xcom2mods/wiki/firsttime . There are a
 number of other fantastic resources available here
 https://www.reddit.com/r/xcom2mods/wiki/index
 
-To start working on the codebase
-    - Fork and clone this repository
-    - This repository has git LFS enabled, make sure that all files were properly
-    acquired. You can check this by making sure the Content folder has appropriately 400Mb of files
-    - Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git`
-    - Verify that everything is set up properly by typing git remote -v which should produce output the same as the following but with your GitHub username in place:
+To start working on the codebase:  
+    + Fork and clone this repository  
+    + This repository has git LFS enabled, make sure that all files were properly  
+    acquired. You can check this by making sure the Content folder has appropriately 400Mb of files  
+    + Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git`  
+    + Verify that everything is set up properly by typing git remote -v which should produce output the same as the following   but with your GitHub username in place:
 ```
-  origin   https://github.com/YourUsername/habitica.git (fetch)
-  origin   https://github.com/YourUsername/habitica.git (push)
+  origin   https://github.com/YourUsername/LWOTC_AlienPack.git (fetch)
+  origin   https://github.com/YourUsername/LWOTC_AlienPack.git (push)
   upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git (fetch)
   upstream https://github.com/X2LongWarOfTheChosen/LWOTC_AlienPack.git (push)
 ```

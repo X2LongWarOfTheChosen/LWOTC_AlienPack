@@ -8,6 +8,8 @@ class X2DownloadableContentInfo_LWOTCAlienPack extends X2DownloadableContentInfo
 
 `include(LWOTC_AlienPack\Src\LWOTC_AlienPack.uci)
 
+var config array<name> droneNames;
+
 /// <summary>
 /// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the
 /// DLC / Mod to perform custom processing in response. This will only be called once the first time a player loads a save that was

@@ -1266,6 +1266,8 @@ static function X2CharacterTemplate CreateTemplate_Drone(name TemplateName)
 	Loot.LootTableName='LWDroneM1_BaseLoot';
 	CharTemplate.Loot.LootReferences.AddItem(Loot);
 
+	CharTemplate.strMatineePackages.AddItem("CIN_Drone");
+
 	// Timed Loot
 	Loot.ForceLevel = 0;
 	if(TemplateName == 'LWDroneM1')

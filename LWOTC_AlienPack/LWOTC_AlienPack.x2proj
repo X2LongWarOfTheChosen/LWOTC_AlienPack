@@ -48,6 +48,15 @@
     <Content Include="Config\XComMissions.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\AdvDroneMatinee.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\CIN_Drone.umap">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\DroneRevealMatinee_ModShaderCache.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\LWAdvGrenadier.upk">
       <SubType>Content</SubType>
     </Content>
@@ -236,6 +245,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_AlienPack\Classes\UIScreenListener_TacticalHUD.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_AlienPack\Classes\UIScreenListener_TacticalHUD_DroneMatinee.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_AlienPack\Classes\X2Ability_LWAlienAbilities.uc">

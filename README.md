@@ -6,7 +6,7 @@ original LW work.
 The alien pack is a port of the
 [original](https://steamcommunity.com/sharedfiles/filedetails/?id=577474474)
 alien pack. The new version is available here  
-https://steamcommunity.com/sharedfiles/filedetails/?id=1205965752
+https://steamcommunity.com/sharedfiles/filedetails/?id=1365964398
 # What version are we at?
 The release version of X2LongWarOfTheChosen/AlienPack is v0.1-alpha  
 The working version of X2LongWarOfTheChosen/AlienPack is v0.2-alpha

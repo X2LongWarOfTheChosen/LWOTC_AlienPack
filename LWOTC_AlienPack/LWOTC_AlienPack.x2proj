@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Guid>fa9b04b1-c447-4ce3-b608-d6f7a7d0e648</Guid>
     <Name>LWOTC_AlienPack</Name>
-    <Description>LWOTC_AlienPack</Description>
-    <SteamPublishID>0</SteamPublishID>
+    <Description>Port of long war 2 aliens to WOTC</Description>
     <AssemblyName>LWOTC_AlienPack</AssemblyName>
     <RootNamespace>LWOTC_AlienPack</RootNamespace>
     <ProjectGuid>{3f350978-33e7-493a-993b-92c1b54bf591}</ProjectGuid>
+    <Guid>622665ab-c893-4f4d-ad57-7cab6952da2f</Guid>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Config\XComAI.ini">

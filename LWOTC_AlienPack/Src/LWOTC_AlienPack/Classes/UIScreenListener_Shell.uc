@@ -18,14 +18,7 @@ struct AIJobInfo_Addition
 	var int DefaultPosition;				// Default index to insert at if cannot find based on name
 };
 
-struct SpawnDistributionList_Addition
-{
-	var name						ListID;
-	var SpawnDistributionList  SpawnDistributionList;
-};
-
 var config array<AIJobInfo_Addition> JobListingAdditions; // Definition of qualifications for each job for this new character
-var config array<SpawnDistributionList_Addition> InclusionExclusionMods;
 
 var private bool HasInited;
 

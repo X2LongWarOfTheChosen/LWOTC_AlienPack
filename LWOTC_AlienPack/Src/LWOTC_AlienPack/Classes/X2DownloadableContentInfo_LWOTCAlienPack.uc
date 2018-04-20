@@ -21,8 +21,8 @@ static event OnLoadedSavedGame()
 	AlienCustomizationManager.RegisterListeners();
 
 
-		`REDSCREEN("ALIEN PACK VERSION 0.2");
-		`APDEBUG("ALIEN PACK VERSION 0.2");
+	`REDSCREEN("ALIEN PACK VERSION 0.2");
+	`APDEBUG("ALIEN PACK VERSION 0.2");
 }
 
 /// <summary>

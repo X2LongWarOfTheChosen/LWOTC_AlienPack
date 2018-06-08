@@ -50,3 +50,8 @@ simulated function EventListenerReturn IncrementUses(Object EventData, Object Ev
 	`TACTICALRULES.SubmitGameState(NewGameState);
 	return ELR_NoInterrupt;
 }
+
+defaultproperties
+{
+	bTacticalTransient=true
+}

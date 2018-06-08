@@ -92,3 +92,8 @@ simulated function EventListenerReturn ResetFlyover(Object EventData, Object Eve
   }
   return ELR_NoInterrupt;
 }
+
+defaultproperties
+{
+	bTacticalTransient=true
+}

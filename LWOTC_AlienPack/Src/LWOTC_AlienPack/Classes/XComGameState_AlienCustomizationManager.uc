@@ -279,3 +279,8 @@ function UpdateAllCustomizations()
 	//
 	//return ELR_NoInterrupt;
 //}
+
+defaultproperties
+{
+	bTacticalTransient=true
+}

@@ -57,3 +57,8 @@ simulated function EventListenerReturn RecordShot(Object EventData, Object Event
 	}
 	return ELR_NoInterrupt;
 }
+
+defaultproperties
+{
+	bTacticalTransient=true
+}

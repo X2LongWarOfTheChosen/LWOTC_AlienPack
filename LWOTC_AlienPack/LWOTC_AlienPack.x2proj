@@ -255,9 +255,6 @@
     <Content Include="Src\LWOTC_AlienPack\Classes\X2Ability_PPAlienAbilities.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_AlienPack\Classes\X2Action_MoveClimbWall_LW.uc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Src\LWOTC_AlienPack\Classes\X2Character_AlienPack.uc">
       <SubType>Content</SubType>
     </Content>
@@ -342,6 +339,9 @@
     <Content Include="Src\LWOTC_AlienPack\Classes\XComGameState_Unit_AlienCustomization.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\WallClimbOverride\Classes\X2Action_MoveClimbWall_Override.uc">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
@@ -351,6 +351,8 @@
     <Folder Include="Src\" />
     <Folder Include="Src\LWOTC_AlienPack" />
     <Folder Include="Src\LWOTC_AlienPack\Classes" />
+    <Folder Include="Src\WallClimbOverride" />
+    <Folder Include="Src\WallClimbOverride\Classes" />
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
 </Project>

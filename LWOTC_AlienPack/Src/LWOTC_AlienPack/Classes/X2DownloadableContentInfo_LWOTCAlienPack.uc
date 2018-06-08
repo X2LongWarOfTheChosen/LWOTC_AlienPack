@@ -23,8 +23,8 @@ static event OnLoadedSavedGame()
 	AlienCustomizationManager.RegisterListeners();
 
 
-		`REDSCREEN("ALIEN PACK VERSION 0.2");
-		`APDEBUG("ALIEN PACK VERSION 0.2");
+	`REDSCREEN("ALIEN PACK VERSION 1.0");
+	`APDEBUG("ALIEN PACK VERSION 1.0");
 }
 
 /// <summary>
@@ -39,8 +39,8 @@ static event InstallNewCampaign(XComGameState StartState)
 	AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager(StartState);
 	AlienCustomizationManager.RegisterListeners();
 
-	`REDSCREEN("ALIEN PACK VERSION 0.2");
-	`APDEBUG("ALIEN PACK VERSION 0.2");
+	`REDSCREEN("ALIEN PACK VERSION 1.0");
+	`APDEBUG("ALIEN PACK VERSION 1.0");
 }
 
 /// <summary>

@@ -117,6 +117,7 @@ static function X2CharacterTemplate CreateTemplate_MutonM2_LW()
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+	CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -187,6 +188,7 @@ static function X2CharacterTemplate CreateTemplate_MutonM2_Dummy()
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+	CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -260,6 +262,7 @@ static function X2CharacterTemplate CreateTemplate_MutonM3_LW()
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -345,6 +348,7 @@ static function X2CharacterTemplate CreateTemplate_Naja(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -433,6 +437,7 @@ static function X2CharacterTemplate CreateTemplate_Sidewinder(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -529,6 +534,7 @@ static function X2CharacterTemplate CreateTemplate_ArchonM2_LW()
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bAllowSpawnFromATT = false;
 
@@ -598,6 +604,7 @@ static function X2CharacterTemplate CreateTemplate_SectoidM2_LW()  // I have big
 	CharTemplate.bIsPsionic = true;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -681,6 +688,7 @@ static function X2CharacterTemplate CreateTemplate_Viper_LW(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -777,6 +785,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGunner(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -873,6 +882,7 @@ static function X2CharacterTemplate CreateTemplate_AdvSentry(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -974,6 +984,7 @@ static function X2CharacterTemplate CreateTemplate_AdvGrenadier(name TemplateNam
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -1072,6 +1083,7 @@ static function X2CharacterTemplate CreateTemplate_AdvRocketeer(name TemplateNam
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bAllowSpawnFromATT = true;
 	CharTemplate.bCanBeTerrorist = false;
@@ -1142,6 +1154,7 @@ static function X2CharacterTemplate CreateTemplate_AdvMec_M3()
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = true;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bAllowSpawnFromATT = true;
 	CharTemplate.bCanBeTerrorist = false;
@@ -1209,6 +1222,7 @@ static function X2CharacterTemplate CreateTemplate_AdvMECArcher(name TemplateNam
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = true;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bAllowSpawnFromATT = true;
 	CharTemplate.bCanBeTerrorist = false;
@@ -1311,6 +1325,7 @@ static function X2CharacterTemplate CreateTemplate_Drone(name TemplateName)
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = true;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 
 	CharTemplate.bCanBeTerrorist = false;
 	CharTemplate.bCanBeCriticallyWounded = false;
@@ -1381,6 +1396,7 @@ static function X2CharacterTemplate CreateTemplate_ChryssalidSoldier()
 	CharTemplate.bIsPsionic = false;
 	CharTemplate.bIsRobotic = false;
 	CharTemplate.bIsSoldier = false;
+    CharTemplate.bIsChosen = false;
 	CharTemplate.bIsMeleeOnly = true;
 
 	CharTemplate.bCanBeTerrorist = false;

@@ -3,8 +3,20 @@
   <PropertyGroup>
     <Guid>fa9b04b1-c447-4ce3-b608-d6f7a7d0e648</Guid>
     <Name>LWOTC_AlienPack</Name>
-    <Description>LWOTC_AlienPack</Description>
-    <SteamPublishID>0</SteamPublishID>
+    <Description>Finally! A fully featured port of the essential Long War Alien Pack for the War of the Chosen expansion. This mod adds possibly the most comprehensive suite of new alien units to fight in your war for freedom from the ethereals. 
+You can expect to face such enemies as:
+
+The Muton Centurion and Muton Elite: Tier two and three variants of the muton, with the new war-cry and personal shield abilities. 
+
+The Chryssalid Soldier and Hive Queen: A much larger chryssalid and a boss type chryssalid. Now featuring up to 2000% more chryssalid per chryssalid.
+
+The Advent Rocketeer, Gunner, Sentry, and Grenadier: All new Advent units designed to utilize a more diverse set of abilities.
+
+The Naja and Sidewinder: A sniper and a speedy flanker version of the beloved viper unit.
+
+And many more upgraded versions of various units, such as a new archon, new MECs, the sectoid commander. 
+
+DISCLAIMER: this mod is a port of a mod not made for War of the Chosen ported by people who did not initially make the mod. It is well supported and tested, so your game is probably not at risk, however we are not liable for any lost or corrupted run. However if any of these happen to you, please report them to us at our bug reporting page so we can address them as soon as we can.</Description>
     <AssemblyName>LWOTC_AlienPack</AssemblyName>
     <RootNamespace>LWOTC_AlienPack</RootNamespace>
     <ProjectGuid>{3f350978-33e7-493a-993b-92c1b54bf591}</ProjectGuid>

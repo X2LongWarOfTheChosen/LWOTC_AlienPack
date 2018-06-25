@@ -21,10 +21,6 @@ static event OnLoadedSavedGame()
 
 	AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager();
 	AlienCustomizationManager.RegisterListeners();
-
-
-	`REDSCREEN("ALIEN PACK VERSION 1.0");
-	`APDEBUG("ALIEN PACK VERSION 1.0");
 }
 
 /// <summary>
@@ -38,9 +34,6 @@ static event InstallNewCampaign(XComGameState StartState)
 
 	AlienCustomizationManager = class'XComGameState_AlienCustomizationManager'.static.CreateAlienCustomizationManager(StartState);
 	AlienCustomizationManager.RegisterListeners();
-
-	`REDSCREEN("ALIEN PACK VERSION 1.0");
-	`APDEBUG("ALIEN PACK VERSION 1.0");
 }
 
 /// <summary>
@@ -81,6 +74,7 @@ static function AddAndRegisterCustomizationManager()
 static event OnPostTemplatesCreated()
 {
 	UpdateForAreaSuppression();
+	`APDEBUG("ALIEN PACK VERSION 1.0");
 }
 
 static function UpdateForAreaSuppression()

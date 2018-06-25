@@ -1,2 +1,4 @@
 
 *.XCOM_suo
+
+*.code-workspace
